@@ -13,10 +13,23 @@ namespace Game_for_programming
     public partial class Menu : Form
     {
         public Language valoda;
-        public Menu()
+        private User user;
+        public Menu(User loggedInUser = null)
         {
             InitializeComponent();
             valoda = new Language("English");
+
+            if (loggedInUser != null)
+            {
+                user = loggedInUser;
+                signinbtn.Hide();
+                signupbtn.Hide();
+                SignOutBtn.Show();
+            }
+            else
+            {
+                SignOutBtn.Hide();
+            }
         }
 
         private void English_Click(object sender, EventArgs e)
@@ -37,9 +50,44 @@ namespace Game_for_programming
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(valoda);
-            this.Hide();
-            form2.Show();
+            if(user == null)
+            {
+                signin signin = new signin();
+                this.Hide();
+                signin.Show();
+            }
+            else
+            {
+                Levels levels = new Levels(user);
+                this.Hide();
+                levels.Show();
+            }
+           
+        }
+
+        private void signinbtn_Click(object sender, EventArgs e)
+        {
+            if (user == null)
+            {
+                signin signin = new signin();
+                this.Hide();
+                signin.Show();
+            }
+            
+        }
+
+        private void SignOutBtn_Click(object sender, EventArgs e)
+        {
+            user = null;
+            signinbtn.Show();
+            signupbtn.Show();
+            SignOutBtn.Hide();
+
+        }
+
+        private void QuitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

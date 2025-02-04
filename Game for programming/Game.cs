@@ -13,13 +13,16 @@ using Microsoft.CodeAnalysis.Scripting;
 
 namespace Game_for_programming
 {
-    public partial class Form2 : Form
+    public partial class Game : Form
     {
         public Language valoda;
-        public Form2(Language language)
+        private User user;
+        public Game(Language language, User user)
         {
             InitializeComponent();
+            this.user = user;
             valoda = language;
+            valoda = new Language("English");
             UpdateTexts();
         }
         private void UpdateTexts()
