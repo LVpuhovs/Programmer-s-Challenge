@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 
@@ -48,7 +49,9 @@ namespace Game_for_programming
             try
             {
                 var scriptOptions = ScriptOptions.Default
-                .WithReferences(AppDomain.CurrentDomain.GetAssemblies())
+                .WithReferences(AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => !string.IsNullOrWhiteSpace(a.Location))
+                .Select(a => MetadataReference.CreateFromFile(a.Location)))
                 .WithImports("System",
                     "System.Collections.Generic",
                     "System.Linq",

@@ -33,6 +33,8 @@
             this.runButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.OutputLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // userCodeTxtBx
@@ -47,9 +49,9 @@
             // outputTxtBx
             // 
             this.outputTxtBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputTxtBx.Location = new System.Drawing.Point(598, 24);
+            this.outputTxtBx.Location = new System.Drawing.Point(598, 66);
             this.outputTxtBx.Name = "outputTxtBx";
-            this.outputTxtBx.Size = new System.Drawing.Size(296, 414);
+            this.outputTxtBx.Size = new System.Drawing.Size(296, 372);
             this.outputTxtBx.TabIndex = 1;
             this.outputTxtBx.Text = "";
             // 
@@ -82,19 +84,40 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // Form2
+            // OutputLbl
+            // 
+            this.OutputLbl.AutoSize = true;
+            this.OutputLbl.Location = new System.Drawing.Point(598, 44);
+            this.OutputLbl.Name = "OutputLbl";
+            this.OutputLbl.Size = new System.Drawing.Size(45, 16);
+            this.OutputLbl.TabIndex = 5;
+            this.OutputLbl.Text = "Output";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 521);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.OutputLbl);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.NextButton);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.outputTxtBx);
             this.Controls.Add(this.userCodeTxtBx);
-            this.Name = "Form2";
+            this.Name = "Game";
             this.Text = "Form2";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,5 +128,7 @@
         private System.Windows.Forms.Button runButton;
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label OutputLbl;
+        private System.Windows.Forms.Label label1;
     }
 }
