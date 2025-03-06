@@ -89,5 +89,15 @@ namespace Game_for_programming
         {
             Application.Exit();
         }
+
+        private void signupbtn_Click(object sender, EventArgs e)
+        {
+            if (user == null)
+            {
+                Signup signup = new Signup();
+                this.Hide();
+                signup.Show();
+            }
+        }
     }
 }

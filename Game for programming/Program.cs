@@ -11,13 +11,14 @@ namespace Game_for_programming
     {
         /// <summary>
         /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
+        /// </summary> 
+        public static string connectionString;
+        [STAThread]  
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string connectionString = File.ReadAllText("Config.txt").Trim(); 
+            connectionString = File.ReadAllText("Config.txt").Trim(); 
             DataManager.Instance.LoadData(connectionString);
             Application.Run(new Menu());
         }
