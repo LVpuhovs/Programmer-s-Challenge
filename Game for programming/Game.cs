@@ -18,13 +18,16 @@ namespace Game_for_programming
     {
         public Language valoda;
         private User user;
-        public Game(Language language, User user)
+        public Language programmingLanguage;
+        public Game(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
             this.user = user;
             valoda = language;
             valoda = new Language("English");
+            this.programmingLanguage = selectedLanguage;
             UpdateTexts();
+            selectedLanguageLBL.Text = programmingLanguage.ToString();
         }
         private void UpdateTexts()
         {
@@ -79,7 +82,9 @@ namespace Game_for_programming
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-
+            Levels levels = new Levels(valoda, user, programmingLanguage);
+            this.Hide();
+            levels.Show();
         }
     }
 }

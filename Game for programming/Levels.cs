@@ -14,17 +14,27 @@ namespace Game_for_programming
     {
         private User user;
         private Language valoda;
-        public Levels(User user)
+        private Language selectedLanguage;
+        public Levels(Language valoda, User user, Language selectedLanguage)
         {
             InitializeComponent();
             this.user = user;
+            this.selectedLanguage = selectedLanguage;
+            this.valoda = valoda;
         }
 
         private void level1Btn_Click(object sender, EventArgs e)
         {
-            Game game = new Game(valoda,user);
+            Game game = new Game(valoda,user,selectedLanguage);
             this.Hide();
             game.Show();
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            LanguageSelection languageSelection = new LanguageSelection(valoda, user);
+            this.Hide();
+            languageSelection.Show();
         }
     }
 }

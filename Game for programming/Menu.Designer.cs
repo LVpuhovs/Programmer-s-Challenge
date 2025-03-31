@@ -37,6 +37,7 @@
             this.signinbtn = new System.Windows.Forms.Button();
             this.signupbtn = new System.Windows.Forms.Button();
             this.SignOutBtn = new System.Windows.Forms.Button();
+            this.UsernameLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.English)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Latvian)).BeginInit();
             this.SuspendLayout();
@@ -94,9 +95,9 @@
             // 
             // signinbtn
             // 
-            this.signinbtn.Location = new System.Drawing.Point(12, 3);
+            this.signinbtn.Location = new System.Drawing.Point(12, 40);
             this.signinbtn.Name = "signinbtn";
-            this.signinbtn.Size = new System.Drawing.Size(74, 31);
+            this.signinbtn.Size = new System.Drawing.Size(104, 31);
             this.signinbtn.TabIndex = 5;
             this.signinbtn.Text = "Sign In";
             this.signinbtn.UseVisualStyleBackColor = true;
@@ -104,9 +105,9 @@
             // 
             // signupbtn
             // 
-            this.signupbtn.Location = new System.Drawing.Point(12, 40);
+            this.signupbtn.Location = new System.Drawing.Point(12, 86);
             this.signupbtn.Name = "signupbtn";
-            this.signupbtn.Size = new System.Drawing.Size(74, 31);
+            this.signupbtn.Size = new System.Drawing.Size(104, 31);
             this.signupbtn.TabIndex = 6;
             this.signupbtn.Text = "Sign Up";
             this.signupbtn.UseVisualStyleBackColor = true;
@@ -114,13 +115,21 @@
             // 
             // SignOutBtn
             // 
-            this.SignOutBtn.Location = new System.Drawing.Point(716, 9);
+            this.SignOutBtn.Location = new System.Drawing.Point(681, 40);
             this.SignOutBtn.Name = "SignOutBtn";
-            this.SignOutBtn.Size = new System.Drawing.Size(79, 24);
+            this.SignOutBtn.Size = new System.Drawing.Size(107, 31);
             this.SignOutBtn.TabIndex = 7;
             this.SignOutBtn.Text = "Sign Out";
             this.SignOutBtn.UseVisualStyleBackColor = true;
             this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
+            // 
+            // UsernameLbl
+            // 
+            this.UsernameLbl.AutoSize = true;
+            this.UsernameLbl.Location = new System.Drawing.Point(350, 19);
+            this.UsernameLbl.Name = "UsernameLbl";
+            this.UsernameLbl.Size = new System.Drawing.Size(0, 16);
+            this.UsernameLbl.TabIndex = 8;
             // 
             // Menu
             // 
@@ -128,6 +137,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.UsernameLbl);
             this.Controls.Add(this.SignOutBtn);
             this.Controls.Add(this.signupbtn);
             this.Controls.Add(this.signinbtn);
@@ -142,6 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.English)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Latvian)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -155,6 +166,7 @@
         private System.Windows.Forms.Button signinbtn;
         private System.Windows.Forms.Button signupbtn;
         private System.Windows.Forms.Button SignOutBtn;
+        private System.Windows.Forms.Label UsernameLbl;
     }
 }
 

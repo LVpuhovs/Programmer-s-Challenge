@@ -18,6 +18,8 @@ namespace Game_for_programming
             InitializeComponent();
             userTable = DataManager.Instance.DataSet.Tables["Users"];
             passwordTxtBx.PasswordChar = '*';
+            this.KeyPreview = true;
+            
         }
 
         private void signinbtn_Click(object sender, EventArgs e)
@@ -45,6 +47,15 @@ namespace Game_for_programming
             Signup signup = new Signup();
             this.Hide();
             signup.Show();
+        }
+
+        private void signin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                signinbtn.PerformClick();
+            }
         }
     }
 }

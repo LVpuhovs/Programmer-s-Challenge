@@ -115,6 +115,7 @@
             this.Controls.Add(this.usernameTxtBx);
             this.Name = "signin";
             this.Text = "signin";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.signin_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

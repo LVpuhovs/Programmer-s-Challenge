@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.level1Btn = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // level1Btn
@@ -42,11 +43,22 @@
             this.level1Btn.UseVisualStyleBackColor = true;
             this.level1Btn.Click += new System.EventHandler(this.level1Btn_Click);
             // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(19, 21);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(97, 33);
+            this.BackButton.TabIndex = 1;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // Levels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.level1Btn);
             this.Name = "Levels";
             this.Text = "Levels";
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button level1Btn;
+        private System.Windows.Forms.Button BackButton;
     }
 }

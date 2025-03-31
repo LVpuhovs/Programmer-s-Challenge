@@ -22,6 +22,7 @@ namespace Game_for_programming
             if (loggedInUser != null)
             {
                 user = loggedInUser;
+                UsernameLbl.Text = "Hey, " + user.Username.ToString();
                 signinbtn.Hide();
                 signupbtn.Hide();
                 SignOutBtn.Show();
@@ -38,6 +39,9 @@ namespace Game_for_programming
             PlayBtn.Text = "Play";
             SettingsBtn.Text = "Settings";
             QuitBtn.Text = "Quit";
+            signinbtn.Text = "Sign In";
+            signupbtn.Text = "Sign Up";
+            SignOutBtn.Text = "Sign Out";
         }
 
         private void Latvian_Click(object sender, EventArgs e)
@@ -46,6 +50,9 @@ namespace Game_for_programming
             PlayBtn.Text = "Spēlēt";
             SettingsBtn.Text = "Iestatījumi";
             QuitBtn.Text = "Iziet";
+            signinbtn.Text = "Pieslēgties";
+            signupbtn.Text = "Pievienoties";
+            SignOutBtn.Text = "Atslēgties";
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
@@ -58,9 +65,9 @@ namespace Game_for_programming
             }
             else
             {
-                Levels levels = new Levels(user);
+                LanguageSelection languageSelection = new LanguageSelection(valoda, user);
                 this.Hide();
-                levels.Show();
+                languageSelection.Show();
             }
            
         }

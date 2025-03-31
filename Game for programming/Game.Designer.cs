@@ -34,7 +34,8 @@
             this.NextButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.OutputLbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.selectedLanguageLBL = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // userCodeTxtBx
@@ -93,21 +94,31 @@
             this.OutputLbl.TabIndex = 5;
             this.OutputLbl.Text = "Output";
             // 
-            // label1
+            // selectedLanguageLBL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.selectedLanguageLBL.AutoSize = true;
+            this.selectedLanguageLBL.Location = new System.Drawing.Point(44, 32);
+            this.selectedLanguageLBL.Name = "selectedLanguageLBL";
+            this.selectedLanguageLBL.Size = new System.Drawing.Size(44, 16);
+            this.selectedLanguageLBL.TabIndex = 6;
+            this.selectedLanguageLBL.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "label2";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 521);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.selectedLanguageLBL);
             this.Controls.Add(this.OutputLbl);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.NextButton);
@@ -129,6 +140,7 @@
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Label OutputLbl;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label selectedLanguageLBL;
+        private System.Windows.Forms.Label label2;
     }
 }

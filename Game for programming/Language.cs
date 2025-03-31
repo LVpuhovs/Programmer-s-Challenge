@@ -13,5 +13,9 @@ namespace Game_for_programming
         {
             language = defaultLanguage;
         }
+        public override string ToString()
+        {
+            return language;
+        }
     }
 }
