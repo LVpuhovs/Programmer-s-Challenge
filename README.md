@@ -1,6 +1,6 @@
 # Programmer's Chalenge jeb Programmēšanas zināsanu uzlabošanas spēle (Programming skills enhancement game)
 
-### JAVA koda pilnveidīga strādāšanai
+### JAVA koda pilnveidīga strādāšanai (windows)
 
 1. solis
         - Nepieciešams pārliecināties ka ir ienistalēts JAVA SE JDK
