@@ -47,6 +47,26 @@ namespace Game_for_programming
         private async void runButton_Click(object sender, EventArgs e)
         {
             string userCode = userCodeTxtBx.Text;
+            string selectedLanguage = programmingLanguage.ToString();
+            switch (selectedLanguage)
+            {
+                case "C#":
+                    await ExecuteCSharpCode(userCode);
+                    break;
+                default:
+                    outputTxtBx.Text = "unsupported language";
+                    break;
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Levels levels = new Levels(valoda, user, programmingLanguage);
+            this.Hide();
+            levels.Show();
+        }
+        private async Task ExecuteCSharpCode(string code)
+        {
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
             try
@@ -63,7 +83,7 @@ namespace Game_for_programming
                     "System.IO",
                     "System.Threading.Tasks");
 
-                await CSharpScript.RunAsync(userCode, scriptOptions);
+                await CSharpScript.RunAsync(code, scriptOptions);
                 outputTxtBx.Text = stringWriter.ToString();
             }
             catch (CompilationErrorException ex)
@@ -78,13 +98,8 @@ namespace Game_for_programming
             {
                 Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
             }
+
         }
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            Levels levels = new Levels(valoda, user, programmingLanguage);
-            this.Hide();
-            levels.Show();
-        }
     }
 }
