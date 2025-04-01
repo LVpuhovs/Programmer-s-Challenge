@@ -1,4 +1,4 @@
-# Programmer's Chalenge
+# Programmer's Chalenge jeb Programmēšanas zināsanu uzlabošanas spēle (Programming skills enhancement game)
 
 ### JAVA koda pilnveidīga strādāšanai
 
