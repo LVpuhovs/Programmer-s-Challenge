@@ -41,9 +41,11 @@ namespace Game_for_programming
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || 
                 string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(role))
             {
+               
+                
                 MessageBox.Show("Please fill in all fields and select a role.");
                 return;
-
+                
             }
             
             DataManager.Instance.AddUser(username, name, password, email, role);

@@ -57,14 +57,6 @@ namespace Game_for_programming
             levels.Show();
         }
 
-        private void CplusplusButton_Click(object sender, EventArgs e)
-        {
-            selectedLanguage = new Language("C++");
-            Levels levels = new Levels(valoda, user, selectedLanguage);
-            this.Hide();
-            levels.Show();
-        }
-
         private void BackButton_Click(object sender, EventArgs e)
         {
             Menu menu = new Menu(user);

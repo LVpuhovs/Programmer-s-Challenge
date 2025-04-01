@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -53,6 +54,10 @@ namespace Game_for_programming
                 case "C#":
                     await ExecuteCSharpCode(userCode);
                     break;
+
+                case "JAVA":
+                    outputTxtBx.Text = ExecuteJavaCode(userCode);
+                    break;
                 default:
                     outputTxtBx.Text = "unsupported language";
                     break;
@@ -99,6 +104,49 @@ namespace Game_for_programming
                 Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
             }
 
+        }
+        private string ExecuteJavaCode(string code)
+        {
+            string filePath = "Main.java";
+            File.WriteAllText(filePath, "public class Main { public static void main(String[] args) { " + code + "} }");
+
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo("javac", filePath)
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                Process process = Process.Start(start);
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                    return process.StandardError.ReadToEnd();
+
+                ProcessStartInfo run = new ProcessStartInfo("java", "Main")
+                {
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                process = Process.Start(run);
+                string output = process.StandardOutput.ReadToEnd();
+                string errorOutput = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+                if (!string.IsNullOrEmpty(errorOutput))
+                {
+                    return "Error: " + errorOutput;
+                }
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return $"Izpildes kļūda: {ex.Message}";
+            }
         }
 
     }

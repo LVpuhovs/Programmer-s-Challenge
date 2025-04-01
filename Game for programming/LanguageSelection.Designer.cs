@@ -33,12 +33,11 @@
             this.cSharpButton = new System.Windows.Forms.Button();
             this.JavaButton = new System.Windows.Forms.Button();
             this.PythonButton = new System.Windows.Forms.Button();
-            this.CplusplusButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(128, 338);
+            this.BackButton.Location = new System.Drawing.Point(128, 305);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(141, 32);
             this.BackButton.TabIndex = 0;
@@ -85,22 +84,11 @@
             this.PythonButton.UseVisualStyleBackColor = true;
             this.PythonButton.Click += new System.EventHandler(this.PythonButton_Click);
             // 
-            // CplusplusButton
-            // 
-            this.CplusplusButton.Location = new System.Drawing.Point(128, 283);
-            this.CplusplusButton.Name = "CplusplusButton";
-            this.CplusplusButton.Size = new System.Drawing.Size(141, 37);
-            this.CplusplusButton.TabIndex = 5;
-            this.CplusplusButton.Text = "C++";
-            this.CplusplusButton.UseVisualStyleBackColor = true;
-            this.CplusplusButton.Click += new System.EventHandler(this.CplusplusButton_Click);
-            // 
             // LanguageSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 444);
-            this.Controls.Add(this.CplusplusButton);
             this.Controls.Add(this.PythonButton);
             this.Controls.Add(this.JavaButton);
             this.Controls.Add(this.cSharpButton);
@@ -121,6 +109,5 @@
         private System.Windows.Forms.Button cSharpButton;
         private System.Windows.Forms.Button JavaButton;
         private System.Windows.Forms.Button PythonButton;
-        private System.Windows.Forms.Button CplusplusButton;
     }
 }
