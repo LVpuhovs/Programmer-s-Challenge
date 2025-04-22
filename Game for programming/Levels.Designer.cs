@@ -34,6 +34,8 @@
             // 
             // level1Btn
             // 
+            this.level1Btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.level1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level1Btn.Location = new System.Drawing.Point(116, 92);
             this.level1Btn.Name = "level1Btn";
@@ -45,6 +47,8 @@
             // 
             // BackButton
             // 
+            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton.Location = new System.Drawing.Point(19, 21);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(97, 33);

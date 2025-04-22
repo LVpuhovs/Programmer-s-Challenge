@@ -37,6 +37,8 @@
             // 
             // BackButton
             // 
+            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton.Location = new System.Drawing.Point(128, 305);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(141, 32);
@@ -47,6 +49,8 @@
             // 
             // PreferedLanguageLbl
             // 
+            this.PreferedLanguageLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PreferedLanguageLbl.AutoSize = true;
             this.PreferedLanguageLbl.Location = new System.Drawing.Point(115, 120);
             this.PreferedLanguageLbl.Name = "PreferedLanguageLbl";
@@ -56,6 +60,8 @@
             // 
             // cSharpButton
             // 
+            this.cSharpButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cSharpButton.Location = new System.Drawing.Point(128, 154);
             this.cSharpButton.Name = "cSharpButton";
             this.cSharpButton.Size = new System.Drawing.Size(141, 37);
@@ -66,6 +72,8 @@
             // 
             // JavaButton
             // 
+            this.JavaButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.JavaButton.Location = new System.Drawing.Point(128, 197);
             this.JavaButton.Name = "JavaButton";
             this.JavaButton.Size = new System.Drawing.Size(141, 37);
@@ -76,6 +84,8 @@
             // 
             // PythonButton
             // 
+            this.PythonButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PythonButton.Location = new System.Drawing.Point(128, 240);
             this.PythonButton.Name = "PythonButton";
             this.PythonButton.Size = new System.Drawing.Size(141, 37);

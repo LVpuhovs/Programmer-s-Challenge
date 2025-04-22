@@ -45,6 +45,8 @@
             // 
             // NameTxtBx
             // 
+            this.NameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTxtBx.Location = new System.Drawing.Point(92, 67);
             this.NameTxtBx.Name = "NameTxtBx";
             this.NameTxtBx.Size = new System.Drawing.Size(181, 22);
@@ -52,6 +54,8 @@
             // 
             // UsernameTxtBx
             // 
+            this.UsernameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UsernameTxtBx.Location = new System.Drawing.Point(92, 140);
             this.UsernameTxtBx.Name = "UsernameTxtBx";
             this.UsernameTxtBx.Size = new System.Drawing.Size(181, 22);
@@ -59,6 +63,8 @@
             // 
             // PasswordTxtBx
             // 
+            this.PasswordTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordTxtBx.Location = new System.Drawing.Point(92, 207);
             this.PasswordTxtBx.Name = "PasswordTxtBx";
             this.PasswordTxtBx.Size = new System.Drawing.Size(181, 22);
@@ -66,6 +72,8 @@
             // 
             // EmailTxtBx
             // 
+            this.EmailTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailTxtBx.Location = new System.Drawing.Point(92, 270);
             this.EmailTxtBx.Name = "EmailTxtBx";
             this.EmailTxtBx.Size = new System.Drawing.Size(181, 22);
@@ -73,6 +81,8 @@
             // 
             // RoleSelection
             // 
+            this.RoleSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RoleSelection.FormattingEnabled = true;
             this.RoleSelection.Items.AddRange(new object[] {
             "Students",
@@ -85,6 +95,8 @@
             // 
             // SignUpBtn
             // 
+            this.SignUpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SignUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUpBtn.Location = new System.Drawing.Point(92, 428);
             this.SignUpBtn.Name = "SignUpBtn";
@@ -96,6 +108,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(92, 45);
             this.label1.Name = "label1";
@@ -105,6 +119,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(92, 121);
             this.label2.Name = "label2";
@@ -114,6 +130,8 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(92, 188);
             this.label3.Name = "label3";
@@ -123,6 +141,8 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(92, 251);
             this.label4.Name = "label4";
@@ -132,6 +152,8 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(92, 319);
             this.label5.Name = "label5";
@@ -141,6 +163,8 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(89, 409);
             this.label6.Name = "label6";
@@ -150,6 +174,8 @@
             // 
             // SignInLbl
             // 
+            this.SignInLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SignInLbl.AutoSize = true;
             this.SignInLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignInLbl.ForeColor = System.Drawing.Color.DarkBlue;

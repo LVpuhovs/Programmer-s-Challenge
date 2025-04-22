@@ -44,6 +44,9 @@
             // 
             // QuitBtn
             // 
+            this.QuitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuitBtn.CausesValidation = false;
             this.QuitBtn.Location = new System.Drawing.Point(326, 330);
             this.QuitBtn.Name = "QuitBtn";
             this.QuitBtn.Size = new System.Drawing.Size(101, 42);
@@ -54,6 +57,9 @@
             // 
             // SettingsBtn
             // 
+            this.SettingsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingsBtn.CausesValidation = false;
             this.SettingsBtn.Location = new System.Drawing.Point(326, 269);
             this.SettingsBtn.Name = "SettingsBtn";
             this.SettingsBtn.Size = new System.Drawing.Size(101, 42);
@@ -63,6 +69,9 @@
             // 
             // PlayBtn
             // 
+            this.PlayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PlayBtn.CausesValidation = false;
             this.PlayBtn.Location = new System.Drawing.Point(326, 209);
             this.PlayBtn.Name = "PlayBtn";
             this.PlayBtn.Size = new System.Drawing.Size(101, 42);
@@ -73,6 +82,7 @@
             // 
             // English
             // 
+            this.English.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.English.Image = ((System.Drawing.Image)(resources.GetObject("English.Image")));
             this.English.Location = new System.Drawing.Point(12, 415);
             this.English.Name = "English";
@@ -84,6 +94,7 @@
             // 
             // Latvian
             // 
+            this.Latvian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Latvian.Image = ((System.Drawing.Image)(resources.GetObject("Latvian.Image")));
             this.Latvian.Location = new System.Drawing.Point(41, 415);
             this.Latvian.Name = "Latvian";
@@ -115,6 +126,7 @@
             // 
             // SignOutBtn
             // 
+            this.SignOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SignOutBtn.Location = new System.Drawing.Point(681, 40);
             this.SignOutBtn.Name = "SignOutBtn";
             this.SignOutBtn.Size = new System.Drawing.Size(107, 31);
@@ -125,6 +137,8 @@
             // 
             // UsernameLbl
             // 
+            this.UsernameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UsernameLbl.AutoSize = true;
             this.UsernameLbl.Location = new System.Drawing.Point(350, 19);
             this.UsernameLbl.Name = "UsernameLbl";

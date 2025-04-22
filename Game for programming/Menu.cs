@@ -30,6 +30,7 @@ namespace Game_for_programming
             else
             {
                 SignOutBtn.Hide();
+                
             }
         }
 
@@ -89,6 +90,7 @@ namespace Game_for_programming
             signinbtn.Show();
             signupbtn.Show();
             SignOutBtn.Hide();
+            UsernameLbl.Text = "";
 
         }
 

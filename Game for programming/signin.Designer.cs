@@ -39,6 +39,8 @@
             // 
             // usernameTxtBx
             // 
+            this.usernameTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.usernameTxtBx.Location = new System.Drawing.Point(79, 127);
             this.usernameTxtBx.Name = "usernameTxtBx";
             this.usernameTxtBx.Size = new System.Drawing.Size(187, 22);
@@ -46,6 +48,8 @@
             // 
             // passwordTxtBx
             // 
+            this.passwordTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordTxtBx.Location = new System.Drawing.Point(79, 197);
             this.passwordTxtBx.Name = "passwordTxtBx";
             this.passwordTxtBx.Size = new System.Drawing.Size(187, 22);
@@ -53,6 +57,8 @@
             // 
             // usernameLbl
             // 
+            this.usernameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.usernameLbl.AutoSize = true;
             this.usernameLbl.Location = new System.Drawing.Point(79, 105);
             this.usernameLbl.Name = "usernameLbl";
@@ -62,6 +68,8 @@
             // 
             // PasswordLbl
             // 
+            this.PasswordLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordLbl.AutoSize = true;
             this.PasswordLbl.Location = new System.Drawing.Point(82, 175);
             this.PasswordLbl.Name = "PasswordLbl";
@@ -71,6 +79,8 @@
             // 
             // signinbtn
             // 
+            this.signinbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.signinbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signinbtn.Location = new System.Drawing.Point(79, 263);
             this.signinbtn.Name = "signinbtn";
@@ -82,6 +92,8 @@
             // 
             // NewHereLbl
             // 
+            this.NewHereLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NewHereLbl.AutoSize = true;
             this.NewHereLbl.Location = new System.Drawing.Point(79, 233);
             this.NewHereLbl.Name = "NewHereLbl";
@@ -91,6 +103,8 @@
             // 
             // signupLbl
             // 
+            this.signupLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.signupLbl.AutoSize = true;
             this.signupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));

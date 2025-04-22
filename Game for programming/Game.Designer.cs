@@ -40,6 +40,9 @@
             // 
             // userCodeTxtBx
             // 
+            this.userCodeTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userCodeTxtBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userCodeTxtBx.Location = new System.Drawing.Point(33, 150);
             this.userCodeTxtBx.Name = "userCodeTxtBx";
@@ -49,6 +52,8 @@
             // 
             // outputTxtBx
             // 
+            this.outputTxtBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.outputTxtBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputTxtBx.Location = new System.Drawing.Point(598, 66);
             this.outputTxtBx.Name = "outputTxtBx";
@@ -58,6 +63,7 @@
             // 
             // runButton
             // 
+            this.runButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.runButton.Location = new System.Drawing.Point(428, 109);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(96, 35);
@@ -68,6 +74,7 @@
             // 
             // NextButton
             // 
+            this.NextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NextButton.Location = new System.Drawing.Point(792, 471);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(102, 33);
@@ -77,6 +84,7 @@
             // 
             // BackButton
             // 
+            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton.Location = new System.Drawing.Point(660, 471);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(102, 33);
@@ -87,6 +95,8 @@
             // 
             // OutputLbl
             // 
+            this.OutputLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputLbl.AutoSize = true;
             this.OutputLbl.Location = new System.Drawing.Point(598, 44);
             this.OutputLbl.Name = "OutputLbl";
@@ -105,6 +115,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(44, 66);
             this.label2.Name = "label2";

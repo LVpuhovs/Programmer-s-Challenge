@@ -49,6 +49,9 @@ namespace Game_for_programming
             }
             
             DataManager.Instance.AddUser(username, name, password, email, role);
+            signin signin = new signin();
+            this.Hide();
+            signin.Show();
         }
 
         private void RoleSelection_ItemCheck(object sender, ItemCheckEventArgs e)
