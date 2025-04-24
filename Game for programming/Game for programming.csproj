@@ -123,6 +123,7 @@
     <Compile Include="Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tasks.cs" />
     <Compile Include="User.cs" />
     <EmbeddedResource Include="LanguageSelection.resx">
       <DependentUpon>LanguageSelection.cs</DependentUpon>
