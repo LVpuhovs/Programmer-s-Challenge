@@ -20,7 +20,6 @@ namespace Game_for_programming
         public Language valoda;
         private User user;
         public Language programmingLanguage;
-        private StringBuilder script;
         public Game(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
@@ -74,6 +73,8 @@ namespace Game_for_programming
             this.Hide();
             levels.Show();
         }
+
+        // Roslyn metode
         private async Task ExecuteCSharpCode(string code)
         {
             var stringWriter = new StringWriter();
@@ -109,6 +110,7 @@ namespace Game_for_programming
             }
 
         }
+        // piemers JAVA kodam nemts no https://www.quora.com/Can-we-compile-and-run-a-Java-file-using-C
         private string ExecuteJavaCode(string code)
         {
             string filePath = "Main.java";
@@ -152,6 +154,8 @@ namespace Game_for_programming
                 return $"Izpildes kļūda: {ex.Message}";
             }
         }
+        // python kodam izmantots piemērs https://medium.com/@hanxuyang0826/triggering-python-code-from-c-a-practical-guide-84b17d593dc6 un java palaisanai kods
+        // kods nodaļā Detailed Example: Generating Bokeh Visualizations
         private string executePythonCode(string code)
         {
             string filepath = "python.py";

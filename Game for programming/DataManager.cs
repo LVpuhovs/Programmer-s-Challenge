@@ -105,7 +105,37 @@ namespace Game_for_programming
                     DataSet.Tables.Add(new DataTable("Users"));
                 }
 
-                userAdapter.Fill(DataSet.Tables["Users"]); 
+                userAdapter.Fill(DataSet.Tables["Users"]);
+
+
+                string taskQuery = $"SELECT * FROM Tasks";
+                SqlDataAdapter taskAdapter = new SqlDataAdapter(taskQuery, con);
+                taskAdapter.TableMappings.Add("Table", "Tasks");
+                if (DataSet.Tables.Contains("Tasks"))
+                {
+                    DataSet.Tables["Tasks"].Clear();
+                }
+                else
+                {
+                    DataSet.Tables.Add(new DataTable("Tasks"));
+                }
+
+                taskAdapter.Fill(DataSet.Tables["Tasks"]);
+
+
+                string userTaskQuery = $"SELECT * FROM UserTasks";
+                SqlDataAdapter userTaskAdapter = new SqlDataAdapter(userTaskQuery, con);
+                userTaskAdapter.TableMappings.Add("Table", "UserTasks");
+                if (DataSet.Tables.Contains("UserTasks"))
+                {
+                    DataSet.Tables["UserTasks"].Clear();
+                }
+                else
+                {
+                    DataSet.Tables.Add(new DataTable("UserTasks"));
+                }
+
+                userTaskAdapter.Fill(DataSet.Tables["UserTasks"]);
             }
         }
         
@@ -124,7 +154,7 @@ namespace Game_for_programming
                          select new User
                          {
                              Username = row["Username"].ToString(),
-                             Id = (int)row["ID"],
+                             IdUser = (int)row["IdUsers"],
                              Email = row["Email"].ToString(),
                              Role = row["Role"].ToString(),
                          }).FirstOrDefault();
