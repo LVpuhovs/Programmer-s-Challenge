@@ -20,7 +20,9 @@ namespace Game_for_programming
         public Language valoda;
         private User user;
         public Language programmingLanguage;
-        public Game(Language language, User user, Language selectedLanguage)
+        private DataTable tasksTable = new DataTable();
+        private int taskId;
+        public Game(Language language, User user, Language selectedLanguage, int taskId)
         {
             InitializeComponent();
             this.user = user;
@@ -29,19 +31,43 @@ namespace Game_for_programming
             this.programmingLanguage = selectedLanguage;
             UpdateTexts();
             selectedLanguageLBL.Text = programmingLanguage.ToString();
+
+
+            tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
+            if (tasksTable == null)
+            {
+                MessageBox.Show("Uzdevumu tabula nav ielādēta.");
+                return;
+            }
+
+            DataRow[] selectedTask = tasksTable.Select($"IdTasks = {taskId}");
+            if (selectedTask.Length > 0)
+            {
+                string task = selectedTask[0]["Task"].ToString();
+                TaskLbl.Text = task;
+            }
+            else
+            {
+                TaskLbl.Text = "Uzdevums nav atrasts";
+
+            }
+
+            taskPanel.AutoSize = true;
+            taskPanel.WrapContents = true;
+            taskPanel.Controls.Add(TaskLbl);
         }
         private void UpdateTexts()
         {
             if (valoda.language == "English")
             {
                 runButton.Text = "Run";
-                NextButton.Text = "Next";
+                DoneButton.Text = "Next";
                 BackButton.Text = "Back";
             }
             else if (valoda.language == "Latviešu")
             {
                 runButton.Text = "Palaist";
-                NextButton.Text = "Nākamais";
+                DoneButton.Text = "Nākamais";
                 BackButton.Text = "Atpakaļ";
             }
         }
@@ -184,6 +210,11 @@ namespace Game_for_programming
             {
                 return $"Izpildes kļūda: {ex.Message}";
             }
+            
+        }
+
+        private void DoneButton_Click(object sender, EventArgs e)
+        {
             
         }
     }

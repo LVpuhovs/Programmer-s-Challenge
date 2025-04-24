@@ -28,22 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.level1Btn = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.levelsPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // level1Btn
-            // 
-            this.level1Btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.level1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.level1Btn.Location = new System.Drawing.Point(116, 92);
-            this.level1Btn.Name = "level1Btn";
-            this.level1Btn.Size = new System.Drawing.Size(70, 54);
-            this.level1Btn.TabIndex = 0;
-            this.level1Btn.Text = "1";
-            this.level1Btn.UseVisualStyleBackColor = true;
-            this.level1Btn.Click += new System.EventHandler(this.level1Btn_Click);
             // 
             // BackButton
             // 
@@ -57,22 +44,29 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // levelsPanel
+            // 
+            this.levelsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.levelsPanel.Location = new System.Drawing.Point(0, 97);
+            this.levelsPanel.Name = "levelsPanel";
+            this.levelsPanel.Size = new System.Drawing.Size(800, 353);
+            this.levelsPanel.TabIndex = 2;
+            // 
             // Levels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.levelsPanel);
             this.Controls.Add(this.BackButton);
-            this.Controls.Add(this.level1Btn);
             this.Name = "Levels";
             this.Text = "Levels";
             this.ResumeLayout(false);
-
+            this.Load += new System.EventHandler(this.levelsLoad);
         }
 
         #endregion
-
-        private System.Windows.Forms.Button level1Btn;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Panel levelsPanel;
     }
 }

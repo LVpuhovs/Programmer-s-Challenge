@@ -93,6 +93,7 @@ namespace Game_for_programming
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
+                //Users table datu iegusana
                 string userQuery = $"SELECT * FROM Users";
                 SqlDataAdapter userAdapter = new SqlDataAdapter(userQuery, con);
                 userAdapter.TableMappings.Add("Table", "Users");
@@ -107,7 +108,7 @@ namespace Game_for_programming
 
                 userAdapter.Fill(DataSet.Tables["Users"]);
 
-
+                // Tasks table datu iegusana
                 string taskQuery = $"SELECT * FROM Tasks";
                 SqlDataAdapter taskAdapter = new SqlDataAdapter(taskQuery, con);
                 taskAdapter.TableMappings.Add("Table", "Tasks");
@@ -122,7 +123,7 @@ namespace Game_for_programming
 
                 taskAdapter.Fill(DataSet.Tables["Tasks"]);
 
-
+                // UserTasks table datu iegusana
                 string userTaskQuery = $"SELECT * FROM UserTasks";
                 SqlDataAdapter userTaskAdapter = new SqlDataAdapter(userTaskQuery, con);
                 userTaskAdapter.TableMappings.Add("Table", "UserTasks");
