@@ -20,6 +20,7 @@ namespace Game_for_programming
         public Language valoda;
         private User user;
         public Language programmingLanguage;
+        private StringBuilder script;
         public Game(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
@@ -57,6 +58,9 @@ namespace Game_for_programming
 
                 case "JAVA":
                     outputTxtBx.Text = ExecuteJavaCode(userCode);
+                    break;
+                case "Python":
+                    outputTxtBx.Text = executePythonCode(userCode);
                     break;
                 default:
                     outputTxtBx.Text = "unsupported language";
@@ -148,6 +152,36 @@ namespace Game_for_programming
                 return $"Izpildes kļūda: {ex.Message}";
             }
         }
+        private string executePythonCode(string code)
+        {
+            string filepath = "python.py";
+            File.WriteAllText(filepath, code);
 
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = filepath,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                };
+                using (Process process = Process.Start(start))
+                {
+                    using (StreamReader reader = process.StandardOutput)
+                    {
+                        string result = reader.ReadToEnd();
+                        return result;
+                    }
+                }
+            }catch (Exception ex)
+            {
+                return $"Izpildes kļūda: {ex.Message}";
+            }
+            
+        }
     }
 }
+
