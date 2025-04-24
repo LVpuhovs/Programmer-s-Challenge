@@ -1,0 +1,10 @@
+x = 5
+y = 6
+sum = x + y
+atnem = x - y
+reiz = x * y
+dalit = x / y
+print("sum = ", sum)
+print("reiz = ", reiz)
+print("atnem = ", atnem)
+print("dalit = ", dalit)
