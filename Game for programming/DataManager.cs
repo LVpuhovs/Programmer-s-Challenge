@@ -7,6 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Game_for_programming
 {
@@ -66,7 +69,8 @@ namespace Game_for_programming
 
                 string hashedPassword = HashPassword(password);
 
-                string insertQuery = "INSERT INTO Users (Username, Name, Password, Email, Role) VALUES (@Username, @Name, @Password, @Email, @Role)";
+                string insertQuery = "INSERT INTO Users (Username, Name, Password, Email, Role) " +
+                    "VALUES (@Username, @Name, @Password, @Email, @Role)";
                 using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
@@ -160,6 +164,73 @@ namespace Game_for_programming
                              Role = row["Role"].ToString(),
                          }).FirstOrDefault();
             return user;
+        }
+
+        public bool saveUserAnwser(int userId, int taskId, string userAnswer)
+        {
+            bool isCorrect = false;
+            using (SqlConnection con = new SqlConnection(Program.connectionString))
+            {
+                con.Open();
+                string getAnswerQuery = "SELECT Answer from Tasks WHERE IdTasks = @taskId";
+                using (SqlCommand getAnswerCmd = new SqlCommand(getAnswerQuery, con))
+                {
+                    getAnswerCmd.Parameters.AddWithValue("@taskId", taskId);
+                    object correctAnswerObj = getAnswerCmd.ExecuteScalar();
+                    if (correctAnswerObj != null)
+                    {
+                        string correctAnswer = correctAnswerObj.ToString().Trim();
+                        if (string.Equals(userAnswer, correctAnswer, StringComparison.OrdinalIgnoreCase))
+                        {
+                            isCorrect = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Pareizā atbilde nav atrasta uzdevumam ar Id: {taskId}");
+                        return false;
+                    }
+                }
+                string insertQuery = @"INSERT INTO UserTasks (IdUser, IdTask, UserAnswer, IsCorrect)
+                                    VALUES (@userId, @taskId, @userAnswer, @isCorrect);";
+                
+                using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@taskId", taskId);
+                    cmd.Parameters.AddWithValue("@userAnswer", userAnswer);
+                    cmd.Parameters.AddWithValue("@isCorrect", isCorrect);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            LoadData(Program.connectionString);
+            return isCorrect;
+        }
+
+        public List<int> getCompletedTaskId(int userId)
+        {
+            List<int> completedTasks = new List<int>();
+
+            using (SqlConnection con = new SqlConnection(Program.connectionString))
+            {
+                con.Open();
+                string query = "SELECT IdTask from UserTasks WHERE IdUser = @userId and IsCorrect = 1";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int taskId = reader.GetInt32(0);
+                            completedTasks.Add(taskId);
+                        }
+                    }
+                }
+            }
+            return completedTasks;
         }
     }
 }

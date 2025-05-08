@@ -16,12 +16,12 @@ namespace Game_for_programming
         private Language valoda;
         private Language selectedLanguage;
         private DataTable tasksTable = new DataTable();
-        public Levels(Language valoda, User user, Language selectedLanguage)
+        public Levels(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
             this.user = user;
             this.selectedLanguage = selectedLanguage;
-            this.valoda = valoda;
+            this.valoda = language;
             tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
             if (tasksTable == null)
             {
@@ -32,11 +32,13 @@ namespace Game_for_programming
         private void levelsLoad(object sender, EventArgs e)
         {
             levelsPanel.Controls.Clear();
+            List<int> completedTasks = DataManager.Instance.getCompletedTaskId(user.IdUser);
 
             int x = 10, y = 10;
             int buttonWidth = 100;
             int buttonHeight = 40;
             int spacing = 10;
+            int maxButtonsPerRow = 5;
 
             int counter = 1;
 
@@ -49,18 +51,29 @@ namespace Game_for_programming
                 taskButton.Left = x;
                 taskButton.Top = y;
 
-                var taskRow = row;
+                int taskId = Convert.ToInt32(row["idTasks"]);
+                if (completedTasks.Contains(taskId))
+                {
+                    taskButton.BackColor = Color.LightGreen;
+                }
+
                 taskButton.Click += (s, args) =>
                 {
-                    int taskId = Convert.ToInt32(taskRow["idTasks"]);
+                    
                     Game game = new Game(valoda, user, selectedLanguage, taskId);
                     this.Hide();
                     game.Show();
                 };
 
                 levelsPanel.Controls.Add(taskButton);
+                x += buttonWidth + spacing;
 
-                y += buttonHeight + spacing;
+                if (counter % maxButtonsPerRow == 0)
+                {
+                    x = 10;
+                    y += buttonHeight + spacing;
+                }
+
                 counter++;
             }
         }

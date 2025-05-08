@@ -21,19 +21,21 @@ namespace Game_for_programming
         private User user;
         public Language programmingLanguage;
         private DataTable tasksTable = new DataTable();
+        private DataTable userTasksTable = new DataTable();
         private int taskId;
         public Game(Language language, User user, Language selectedLanguage, int taskId)
         {
             InitializeComponent();
             this.user = user;
             valoda = language;
-            valoda = new Language("English");
             this.programmingLanguage = selectedLanguage;
+            this.taskId = taskId;
             UpdateTexts();
             selectedLanguageLBL.Text = programmingLanguage.ToString();
 
-
+            userTasksTable = DataManager.Instance.DataSet.Tables["UserTasks"];
             tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
+
             if (tasksTable == null)
             {
                 MessageBox.Show("Uzdevumu tabula nav ielādēta.");
@@ -43,8 +45,17 @@ namespace Game_for_programming
             DataRow[] selectedTask = tasksTable.Select($"IdTasks = {taskId}");
             if (selectedTask.Length > 0)
             {
-                string task = selectedTask[0]["Task"].ToString();
-                TaskLbl.Text = task;
+                if (valoda.ToString() == "Latviešu")
+                {
+                    string task = selectedTask[0]["Task"].ToString();
+                    TaskLbl.Text = task;
+                }
+                else if (valoda.ToString() == "English")
+                {
+                    string task = selectedTask[0]["TaskEng"].ToString();
+                    TaskLbl.Text = task;
+                }
+                
             }
             else
             {
@@ -58,17 +69,19 @@ namespace Game_for_programming
         }
         private void UpdateTexts()
         {
-            if (valoda.language == "English")
+            if (valoda.ToString() == "English")
             {
                 runButton.Text = "Run";
-                DoneButton.Text = "Next";
+                DoneButton.Text = "Done";
                 BackButton.Text = "Back";
+                OutputLbl.Text = "Output";
             }
-            else if (valoda.language == "Latviešu")
+            else if (valoda.ToString() == "Latviešu")
             {
                 runButton.Text = "Palaist";
-                DoneButton.Text = "Nākamais";
+                DoneButton.Text = "Pabeigt";
                 BackButton.Text = "Atpakaļ";
+                OutputLbl.Text = "Izvade";
             }
         }
         private async void runButton_Click(object sender, EventArgs e)
@@ -215,7 +228,20 @@ namespace Game_for_programming
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-            
+            string userAnswer = outputTxtBx.Text.Trim();
+
+            bool isCorrect = DataManager.Instance.saveUserAnwser(user.IdUser, taskId, userAnswer);
+            if (isCorrect)
+            {
+                MessageBox.Show("Pareizi!");
+                Levels levels = new Levels(valoda, user, programmingLanguage);
+                this.Hide();
+                levels.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nepareizi");
+            }
         }
     }
 }

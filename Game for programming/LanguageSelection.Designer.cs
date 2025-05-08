@@ -54,9 +54,9 @@
             this.PreferedLanguageLbl.AutoSize = true;
             this.PreferedLanguageLbl.Location = new System.Drawing.Point(115, 120);
             this.PreferedLanguageLbl.Name = "PreferedLanguageLbl";
-            this.PreferedLanguageLbl.Size = new System.Drawing.Size(176, 16);
+            this.PreferedLanguageLbl.Size = new System.Drawing.Size(180, 16);
             this.PreferedLanguageLbl.TabIndex = 1;
-            this.PreferedLanguageLbl.Text = "Choose Preffered Language";
+            this.PreferedLanguageLbl.Text = "Choose Prefferred Language";
             // 
             // cSharpButton
             // 

@@ -15,10 +15,10 @@ namespace Game_for_programming
         public Language valoda;
         public Language selectedLanguage;
         private User user;
-        public LanguageSelection(Language valoda, User loggedInUser = null)
+        public LanguageSelection(Language language, User loggedInUser = null)
         {
             InitializeComponent();
-            valoda = new Language("English");
+            valoda = language;
             selectedLanguage = new Language("C#");
 
             if (loggedInUser != null)
