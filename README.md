@@ -1,5 +1,5 @@
 # Programmer's Chalenge jeb Programmēšanas zināsanu uzlabošanas spēle (Programming skills enhancement game)
-## JAVA koda pilnveidīga strādāšanai (windows)
+## JAVA koda pilnveidīgai strādāšanai (Windows)
 * Nepieciešams pārliecināties ka ir ienistalēts JAVA SE JDK - Links uz JAVA instalācijas mājaslapu
 
 - (JDK-Install)
@@ -17,3 +17,10 @@
       java -version
       javac -version
  Kad ir redzamas abas versijas tad var atvērt programmu un sekmīgi izpildīsies JAVA koda kompilēšana
+
+
+## Python koda pilnveidīgai strādāšanai (Windows)
+* Nepieciešams pārliecināties ka ir instalēts Python, ja nav tad links kā instalēt python:
+       https://phoenixnap.com/kb/how-to-install-python-3-windows
+
+- Python pārbaude - termināli ieraksti python un ja ir instalēts būs redzama python versija
