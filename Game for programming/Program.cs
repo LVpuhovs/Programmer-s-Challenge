@@ -18,8 +18,10 @@ namespace Game_for_programming
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            connectionString = File.ReadAllText("Config.txt").Trim(); 
+            connectionString = File.ReadAllText("Config.txt").Trim();
+            string musicFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Music");
             DataManager.Instance.LoadData(connectionString);
+            MusicManager.initialize(musicFolder);
             Application.Run(new Menu());
         }
     }

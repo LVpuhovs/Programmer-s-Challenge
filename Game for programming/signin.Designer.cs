@@ -128,6 +128,7 @@
             this.Controls.Add(this.passwordTxtBx);
             this.Controls.Add(this.usernameTxtBx);
             this.Name = "signin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "signin";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.signin_KeyDown);
             this.ResumeLayout(false);

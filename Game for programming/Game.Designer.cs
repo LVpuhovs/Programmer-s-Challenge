@@ -37,6 +37,7 @@
             this.selectedLanguageLBL = new System.Windows.Forms.Label();
             this.taskPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TaskLbl = new System.Windows.Forms.Label();
+            this.DescriptionButton = new System.Windows.Forms.Button();
             this.taskPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,11 +141,22 @@
             this.TaskLbl.TabIndex = 7;
             this.TaskLbl.Text = "label2";
             // 
+            // DescriptionButton
+            // 
+            this.DescriptionButton.Location = new System.Drawing.Point(33, 481);
+            this.DescriptionButton.Name = "DescriptionButton";
+            this.DescriptionButton.Size = new System.Drawing.Size(98, 23);
+            this.DescriptionButton.TabIndex = 9;
+            this.DescriptionButton.Text = "Description";
+            this.DescriptionButton.UseVisualStyleBackColor = true;
+            this.DescriptionButton.Click += new System.EventHandler(this.DescriptionButton_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 521);
+            this.Controls.Add(this.DescriptionButton);
             this.Controls.Add(this.taskPanel);
             this.Controls.Add(this.selectedLanguageLBL);
             this.Controls.Add(this.OutputLbl);
@@ -154,7 +166,9 @@
             this.Controls.Add(this.outputTxtBx);
             this.Controls.Add(this.userCodeTxtBx);
             this.Name = "Game";
-            this.Text = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Game";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.taskPanel.ResumeLayout(false);
             this.taskPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -173,5 +187,6 @@
         private System.Windows.Forms.Label selectedLanguageLBL;
         private System.Windows.Forms.FlowLayoutPanel taskPanel;
         private System.Windows.Forms.Label TaskLbl;
+        private System.Windows.Forms.Button DescriptionButton;
     }
 }

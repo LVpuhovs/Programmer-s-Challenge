@@ -18,9 +18,14 @@ namespace Game_for_programming
         public LanguageSelection(Language language, User loggedInUser = null)
         {
             InitializeComponent();
+            this.KeyPreview = true;
             valoda = language;
             selectedLanguage = new Language("C#");
+            if (valoda.ToString() == "Latviešu")
+                PreferedLanguageLbl.Text = "Izvēlies vēlamo valodu";
 
+            else if (valoda.ToString() == "English")
+                PreferedLanguageLbl.Text = "Choose Prefferred Language";
             if (loggedInUser != null)
             {
                 user = loggedInUser;
@@ -62,6 +67,15 @@ namespace Game_for_programming
             Menu menu = new Menu(user);
             this.Hide();
             menu.Show();
+        }
+
+        private void LanguageSelection_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Pause pause = new Pause(user, this);
+                pause.ShowDialog();
+            }
         }
     }
 }

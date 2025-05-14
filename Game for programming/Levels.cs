@@ -19,20 +19,33 @@ namespace Game_for_programming
         public Levels(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
+            this.KeyPreview = true;
             this.user = user;
             this.selectedLanguage = selectedLanguage;
             this.valoda = language;
+
+            if (valoda.ToString() == "Latviešu")
+                LevelsLbl.Text = "Līmeņi";
+
+            else if (valoda.ToString() == "English")
+                LevelsLbl.Text = "Levels";
+
+
             tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
             if (tasksTable == null)
             {
-                MessageBox.Show("Uzdevumu tabula nav ielādēta.");
+                if (valoda.ToString() == "Latviešu")
+                    MessageBox.Show("Uzdevumu tabula nav ielādēta.");
+
+                else if (valoda.ToString() == "English")
+                    MessageBox.Show("Couldn't load task table.");
                 return;
             }
         }
         private void levelsLoad(object sender, EventArgs e)
         {
             levelsPanel.Controls.Clear();
-            List<int> completedTasks = DataManager.Instance.getCompletedTaskId(user.IdUser);
+            List<int> completedTasks = DataManager.Instance.getCompletedTaskId(user.IdUser, selectedLanguage.ToString());
 
             int x = 10, y = 10;
             int buttonWidth = 100;
@@ -45,7 +58,12 @@ namespace Game_for_programming
             foreach (DataRow row in tasksTable.Rows)
             {
                 Button taskButton = new Button();
-                taskButton.Text = $"Level {counter}";
+                if (valoda.ToString() == "Latviešu")
+                    taskButton.Text = $"{counter} Līmenis";
+                    
+                else if (valoda.ToString() == "English")
+                    taskButton.Text = $"Level {counter}";
+                
                 taskButton.Width = buttonWidth;
                 taskButton.Height = buttonHeight;
                 taskButton.Left = x;
@@ -63,6 +81,7 @@ namespace Game_for_programming
                     Game game = new Game(valoda, user, selectedLanguage, taskId);
                     this.Hide();
                     game.Show();
+                    
                 };
 
                 levelsPanel.Controls.Add(taskButton);
@@ -85,6 +104,15 @@ namespace Game_for_programming
             LanguageSelection languageSelection = new LanguageSelection(valoda, user);
             this.Hide();
             languageSelection.Show();
+        }
+
+        private void Levels_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) 
+            { 
+                Pause pause = new Pause(user, this);
+                pause.ShowDialog();
+            }
         }
     }
 }

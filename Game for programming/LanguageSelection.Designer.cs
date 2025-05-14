@@ -105,8 +105,10 @@
             this.Controls.Add(this.PreferedLanguageLbl);
             this.Controls.Add(this.BackButton);
             this.Name = "LanguageSelection";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Language Selection";
             this.Load += new System.EventHandler(this.LanguageSelection_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LanguageSelection_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

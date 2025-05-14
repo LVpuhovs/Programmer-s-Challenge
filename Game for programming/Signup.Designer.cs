@@ -205,6 +205,7 @@
             this.Controls.Add(this.UsernameTxtBx);
             this.Controls.Add(this.NameTxtBx);
             this.Name = "Signup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Signup";
             this.ResumeLayout(false);
             this.PerformLayout();

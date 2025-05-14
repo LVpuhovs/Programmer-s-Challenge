@@ -30,6 +30,7 @@
         {
             this.BackButton = new System.Windows.Forms.Button();
             this.levelsPanel = new System.Windows.Forms.Panel();
+            this.LevelsLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BackButton
@@ -52,21 +53,39 @@
             this.levelsPanel.Size = new System.Drawing.Size(800, 353);
             this.levelsPanel.TabIndex = 2;
             // 
+            // LevelsLbl
+            // 
+            this.LevelsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LevelsLbl.AutoSize = true;
+            this.LevelsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LevelsLbl.Location = new System.Drawing.Point(346, 21);
+            this.LevelsLbl.Name = "LevelsLbl";
+            this.LevelsLbl.Size = new System.Drawing.Size(99, 31);
+            this.LevelsLbl.TabIndex = 3;
+            this.LevelsLbl.Text = "Levels";
+            // 
             // Levels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LevelsLbl);
             this.Controls.Add(this.levelsPanel);
             this.Controls.Add(this.BackButton);
             this.Name = "Levels";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Levels";
-            this.ResumeLayout(false);
             this.Load += new System.EventHandler(this.levelsLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Levels_KeyDown);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel levelsPanel;
+        private System.Windows.Forms.Label LevelsLbl;
     }
 }

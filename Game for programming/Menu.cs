@@ -22,7 +22,7 @@ namespace Game_for_programming
             if (loggedInUser != null)
             {
                 user = loggedInUser;
-                UsernameLbl.Text = "Hey, " + user.Username.ToString();
+                UsernameLbl.Text = "Hey, " + user.Username.ToString() + "!";
                 signinbtn.Hide();
                 signupbtn.Hide();
                 SignOutBtn.Show();
@@ -96,6 +96,7 @@ namespace Game_for_programming
 
         private void QuitBtn_Click(object sender, EventArgs e)
         {
+            this.Close();
             Application.Exit();
         }
 
@@ -107,6 +108,16 @@ namespace Game_for_programming
                 this.Hide();
                 signup.Show();
             }
+        }
+
+        private void SettingsBtn_Click(object sender, EventArgs e)
+        {
+            using (Settings settings = new Settings())
+            {
+                settings.ShowDialog();
+            }
+
+
         }
     }
 }

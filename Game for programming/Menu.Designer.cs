@@ -66,6 +66,7 @@
             this.SettingsBtn.TabIndex = 1;
             this.SettingsBtn.Text = "Settings";
             this.SettingsBtn.UseVisualStyleBackColor = true;
+            this.SettingsBtn.Click += new System.EventHandler(this.SettingsBtn_Click);
             // 
             // PlayBtn
             // 
@@ -162,7 +163,7 @@
             this.Controls.Add(this.QuitBtn);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.English)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Latvian)).EndInit();
             this.ResumeLayout(false);

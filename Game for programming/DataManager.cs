@@ -166,7 +166,7 @@ namespace Game_for_programming
             return user;
         }
 
-        public bool saveUserAnwser(int userId, int taskId, string userAnswer)
+        public bool saveUserAnwser(int userId, int taskId, string userAnswer, string programLanguage)
         {
             bool isCorrect = false;
             using (SqlConnection con = new SqlConnection(Program.connectionString))
@@ -184,6 +184,7 @@ namespace Game_for_programming
                         {
                             isCorrect = true;
                         }
+                        
                     }
                     else
                     {
@@ -191,8 +192,8 @@ namespace Game_for_programming
                         return false;
                     }
                 }
-                string insertQuery = @"INSERT INTO UserTasks (IdUser, IdTask, UserAnswer, IsCorrect)
-                                    VALUES (@userId, @taskId, @userAnswer, @isCorrect);";
+                string insertQuery = @"INSERT INTO UserTasks (IdUser, IdTask, UserAnswer, IsCorrect, Language)
+                                    VALUES (@userId, @taskId, @userAnswer, @isCorrect, @language);";
                 
                 using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                 {
@@ -200,6 +201,7 @@ namespace Game_for_programming
                     cmd.Parameters.AddWithValue("@taskId", taskId);
                     cmd.Parameters.AddWithValue("@userAnswer", userAnswer);
                     cmd.Parameters.AddWithValue("@isCorrect", isCorrect);
+                    cmd.Parameters.AddWithValue("@language", programLanguage);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -209,17 +211,18 @@ namespace Game_for_programming
             return isCorrect;
         }
 
-        public List<int> getCompletedTaskId(int userId)
+        public List<int> getCompletedTaskId(int userId, string programLanguage)
         {
             List<int> completedTasks = new List<int>();
 
             using (SqlConnection con = new SqlConnection(Program.connectionString))
             {
                 con.Open();
-                string query = "SELECT IdTask from UserTasks WHERE IdUser = @userId and IsCorrect = 1";
+                string query = "SELECT IdTask from UserTasks WHERE IdUser = @userId and IsCorrect = 1 and Language = @language";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@language", programLanguage);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

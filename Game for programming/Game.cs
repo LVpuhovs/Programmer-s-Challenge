@@ -26,6 +26,7 @@ namespace Game_for_programming
         public Game(Language language, User user, Language selectedLanguage, int taskId)
         {
             InitializeComponent();
+            this.KeyPreview = true;
             this.user = user;
             valoda = language;
             this.programmingLanguage = selectedLanguage;
@@ -38,7 +39,12 @@ namespace Game_for_programming
 
             if (tasksTable == null)
             {
-                MessageBox.Show("Uzdevumu tabula nav ielādēta.");
+                if (valoda.ToString() == "Latviešu")
+                    MessageBox.Show("Uzdevumu tabula nav ielādēta.");
+                    
+                else if (valoda.ToString() == "English")
+                    MessageBox.Show("Couldn't load task table.");
+                
                 return;
             }
 
@@ -49,18 +55,27 @@ namespace Game_for_programming
                 {
                     string task = selectedTask[0]["Task"].ToString();
                     TaskLbl.Text = task;
+                    string description = selectedTask[0]["Description"].ToString();
+                    MessageBox.Show($"{description}");
                 }
                 else if (valoda.ToString() == "English")
                 {
                     string task = selectedTask[0]["TaskEng"].ToString();
                     TaskLbl.Text = task;
+                    string description = selectedTask[0]["DescriptionEng"].ToString();
+                    MessageBox.Show($"{description}");
                 }
                 
             }
             else
             {
-                TaskLbl.Text = "Uzdevums nav atrasts";
+                
+                if (valoda.ToString() == "Latviešu")
+                    TaskLbl.Text = "Uzdevums nav atrasts";
+                    
 
+                else if (valoda.ToString() == "English")
+                    TaskLbl.Text = "Couldn't find the task";
             }
 
             taskPanel.AutoSize = true;
@@ -75,6 +90,7 @@ namespace Game_for_programming
                 DoneButton.Text = "Done";
                 BackButton.Text = "Back";
                 OutputLbl.Text = "Output";
+                DescriptionButton.Text = "Description";
             }
             else if (valoda.ToString() == "Latviešu")
             {
@@ -82,6 +98,7 @@ namespace Game_for_programming
                 DoneButton.Text = "Pabeigt";
                 BackButton.Text = "Atpakaļ";
                 OutputLbl.Text = "Izvade";
+                DescriptionButton.Text = "Apraksts";
             }
         }
         private async void runButton_Click(object sender, EventArgs e)
@@ -114,6 +131,7 @@ namespace Game_for_programming
         }
 
         // Roslyn metode
+        // piemērs https://stackoverflow.com/questions/32769630/how-to-compile-a-c-sharp-file-with-roslyn-programmatically
         private async Task ExecuteCSharpCode(string code)
         {
             var stringWriter = new StringWriter();
@@ -141,7 +159,12 @@ namespace Game_for_programming
             }
             catch (Exception ex)
             {
-                outputTxtBx.Text = $"Izpildes kļūda:\n{ex.Message}";
+                if (valoda.ToString() == "Latviešu")
+                    outputTxtBx.Text = $"Izpildes kļūda:\n{ex.Message}";
+                    
+                else if (valoda.ToString() == "English")
+                    outputTxtBx.Text = $"Run Error:\n{ex.Message}";
+                
             }
             finally
             {
@@ -149,7 +172,7 @@ namespace Game_for_programming
             }
 
         }
-        // piemers JAVA kodam nemts no https://www.quora.com/Can-we-compile-and-run-a-Java-file-using-C
+        // piemērs JAVA kodam ņemts no https://www.quora.com/Can-we-compile-and-run-a-Java-file-using-C
         private string ExecuteJavaCode(string code)
         {
             string filePath = "Main.java";
@@ -228,19 +251,49 @@ namespace Game_for_programming
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-            string userAnswer = outputTxtBx.Text.Trim();
+            string userAnswer = outputTxtBx.Text.Replace("\r\n", " ").Replace("\n", " ").Trim();
 
-            bool isCorrect = DataManager.Instance.saveUserAnwser(user.IdUser, taskId, userAnswer);
+            bool isCorrect = DataManager.Instance.saveUserAnwser(user.IdUser, taskId, userAnswer, programmingLanguage.ToString());
             if (isCorrect)
             {
-                MessageBox.Show("Pareizi!");
+                if (valoda.ToString() == "Latviešu")
+                    MessageBox.Show("Pareizi!");
+                else if (valoda.ToString() == "English")
+                    MessageBox.Show("Correct!");
                 Levels levels = new Levels(valoda, user, programmingLanguage);
                 this.Hide();
                 levels.Show();
             }
             else
             {
-                MessageBox.Show("Nepareizi");
+                if (valoda.ToString() == "Latviešu")
+                    MessageBox.Show("Nepareizi!");
+                else if (valoda.ToString() == "English")
+                    MessageBox.Show("Incorrect!");
+            }
+        }
+
+        private void DescriptionButton_Click(object sender, EventArgs e)
+        {
+            DataRow[] selectedTask = tasksTable.Select($"IdTasks = {taskId}");
+            if (valoda.ToString() == "Latviešu")
+            {
+                string description = selectedTask[0]["Description"].ToString();
+                MessageBox.Show($"{description}");
+            }
+            else if (valoda.ToString() == "English")
+            {
+                string description = selectedTask[0]["DescriptionEng"].ToString();
+                MessageBox.Show($"{description}");
+            }
+        }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Pause pause = new Pause(user, this);
+                pause.ShowDialog();
             }
         }
     }
