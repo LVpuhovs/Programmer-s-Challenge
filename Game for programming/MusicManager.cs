@@ -23,13 +23,15 @@ namespace Game_for_programming
 
             Shuffle(playlist);
 
-            player = new WindowsMediaPlayer { };
+            player = new WindowsMediaPlayer {
+                settings = {volume = 40}
+            };
             player.settings.setMode("loop", false);
             player.PlayStateChange += OnEnd;
             Play();
         }
 
-
+        
         private static void Shuffle(string[] arr)
         {
             for (int i = arr.Length - 1; i > 0; i--)
