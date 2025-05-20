@@ -53,17 +53,17 @@ namespace Game_for_programming
             {
                 if (valoda.ToString() == "Latviešu")
                 {
-                    string task = selectedTask[0]["Task"].ToString();
+                    string task = selectedTask[0]["TaskLV"].ToString();
                     TaskLbl.Text = task;
-                    string description = selectedTask[0]["Description"].ToString();
-                    MessageBox.Show($"{description}");
+                    string description = selectedTask[0]["DescriptionLV"].ToString();
+                    MessageBox.Show($"{description}", "Apraksts");
                 }
                 else if (valoda.ToString() == "English")
                 {
                     string task = selectedTask[0]["TaskEng"].ToString();
                     TaskLbl.Text = task;
                     string description = selectedTask[0]["DescriptionEng"].ToString();
-                    MessageBox.Show($"{description}");
+                    MessageBox.Show($"{description}", "Description");
                 }
                 
             }
@@ -278,13 +278,13 @@ namespace Game_for_programming
             DataRow[] selectedTask = tasksTable.Select($"IdTasks = {taskId}");
             if (valoda.ToString() == "Latviešu")
             {
-                string description = selectedTask[0]["Description"].ToString();
-                MessageBox.Show($"{description}");
+                string description = selectedTask[0]["DescriptionLV"].ToString();
+                MessageBox.Show($"{description}", "Apraksts");
             }
             else if (valoda.ToString() == "English")
             {
                 string description = selectedTask[0]["DescriptionEng"].ToString();
-                MessageBox.Show($"{description}");
+                MessageBox.Show($"{description}", "Description");
             }
         }
 
