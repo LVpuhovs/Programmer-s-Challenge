@@ -26,14 +26,15 @@ namespace Game_for_programming
                 signinbtn.Hide();
                 signupbtn.Hide();
                 SignOutBtn.Show();
-                if (user.Role == "Lecturer / Professor" || user.Role == "admin") {
+                if (user.Role == "Lecturer / Professor" || user.Role == "admin")
                     TaskListButton.Show();
-                }
+                else
+                    TaskListButton.Hide();
             }
             else
             {
                 SignOutBtn.Hide();
-                
+                TaskListButton.Hide();
             }
         }
 
@@ -46,6 +47,7 @@ namespace Game_for_programming
             signinbtn.Text = "Sign In";
             signupbtn.Text = "Sign Up";
             SignOutBtn.Text = "Sign Out";
+            TaskListButton.Text = "Task List";
         }
 
         private void Latvian_Click(object sender, EventArgs e)
@@ -57,6 +59,7 @@ namespace Game_for_programming
             signinbtn.Text = "Pieslēgties";
             signupbtn.Text = "Pievienoties";
             SignOutBtn.Text = "Atslēgties";
+            TaskListButton.Text = "Uzdevumu Saraksts";
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace Game_for_programming
             signupbtn.Show();
             SignOutBtn.Hide();
             UsernameLbl.Text = "";
-
+            TaskListButton.Hide();
         }
 
         private void QuitBtn_Click(object sender, EventArgs e)
@@ -125,7 +128,9 @@ namespace Game_for_programming
 
         private void TaskListButton_Click(object sender, EventArgs e)
         {
-
+            TaskList taskList = new TaskList(user, valoda);
+            this.Hide();
+            taskList.Show();
         }
     }
 }

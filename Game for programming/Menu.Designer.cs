@@ -150,9 +150,9 @@
             // TaskListButton
             // 
             this.TaskListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaskListButton.Location = new System.Drawing.Point(681, 415);
+            this.TaskListButton.Location = new System.Drawing.Point(552, 415);
             this.TaskListButton.Name = "TaskListButton";
-            this.TaskListButton.Size = new System.Drawing.Size(107, 31);
+            this.TaskListButton.Size = new System.Drawing.Size(236, 31);
             this.TaskListButton.TabIndex = 9;
             this.TaskListButton.Text = "Task List";
             this.TaskListButton.UseVisualStyleBackColor = true;

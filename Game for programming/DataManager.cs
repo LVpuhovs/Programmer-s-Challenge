@@ -74,7 +74,6 @@ namespace Game_for_programming
                 Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
                 Match match = emailRegex.Match(email);
 
-                
                 if (match.Success && passwordMatch.Success) 
                 {
                     string hashedPassword = HashPassword(password);
@@ -107,8 +106,6 @@ namespace Game_for_programming
                     MessageBox.Show("Password must be 8–25 characters long and include at least one uppercase letter and one special character!");
                     return;
                 }
-
-                
             }
         }
 

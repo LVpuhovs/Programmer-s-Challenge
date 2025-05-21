@@ -99,3 +99,4 @@ D:\Game for programming\Game for programming\obj\Debug\Interop.WMPLib.dll
 D:\Game for programming\Game for programming\obj\Debug\Game for programming.csproj.ResolveComReference.cache
 D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.Settings.resources
 D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.Pause.resources
+D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.TaskList.resources
