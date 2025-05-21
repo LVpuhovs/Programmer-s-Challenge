@@ -55,9 +55,11 @@ namespace Game_for_programming
 
             int counter = 1;
 
-            foreach (DataRow row in tasksTable.Rows)
+            foreach (DataRowView rowView in tasksTable.DefaultView)
             {
+                DataRow row = rowView.Row;
                 Button taskButton = new Button();
+
                 if (valoda.ToString() == "Latviešu")
                     taskButton.Text = $"{counter} Līmenis";
                     
@@ -113,6 +115,17 @@ namespace Game_for_programming
                 Pause pause = new Pause(user, this);
                 pause.ShowDialog();
             }
+        }
+
+        private void DifficultyFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedDifficulty = DifficultyFilter.SelectedItem.ToString();
+
+            if(selectedDifficulty == "All")
+                tasksTable.DefaultView.RowFilter = string.Empty;
+            else
+                tasksTable.DefaultView.RowFilter = $"Difficulty = '{selectedDifficulty}'";
+            levelsLoad(null, EventArgs.Empty);
         }
     }
 }

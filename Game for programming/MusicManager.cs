@@ -26,6 +26,7 @@ namespace Game_for_programming
             player = new WindowsMediaPlayer {
                 settings = {volume = 40}
             };
+            
             player.settings.setMode("loop", false);
             player.PlayStateChange += OnEnd;
             Play();
@@ -49,12 +50,16 @@ namespace Game_for_programming
 
         private static void OnEnd(int state)
         {
-            if((WMPPlayState)state == WMPPlayState.wmppsMediaEnded)
+            if((WMPPlayState)state == WMPPlayState.wmppsMediaEnded || (WMPPlayState)state == WMPPlayState.wmppsStopped)
             {
-                currentid = (currentid + 1) % playlist.Length;
-                if (currentid == 0)
-                    Shuffle(playlist);
-                Play();
+                Task.Delay(50).ContinueWith(t =>
+                {
+                    currentid = (currentid + 1) % playlist.Length;
+                    if (currentid == 0)
+                        Shuffle(playlist);
+                    Play();
+                });
+                
             }
         }
 

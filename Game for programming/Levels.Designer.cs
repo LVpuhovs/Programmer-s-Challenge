@@ -31,6 +31,8 @@
             this.BackButton = new System.Windows.Forms.Button();
             this.levelsPanel = new System.Windows.Forms.Panel();
             this.LevelsLbl = new System.Windows.Forms.Label();
+            this.DifficultyFilter = new System.Windows.Forms.ComboBox();
+            this.FilterLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BackButton
@@ -48,9 +50,9 @@
             // levelsPanel
             // 
             this.levelsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.levelsPanel.Location = new System.Drawing.Point(0, 97);
+            this.levelsPanel.Location = new System.Drawing.Point(0, 126);
             this.levelsPanel.Name = "levelsPanel";
-            this.levelsPanel.Size = new System.Drawing.Size(800, 353);
+            this.levelsPanel.Size = new System.Drawing.Size(800, 324);
             this.levelsPanel.TabIndex = 2;
             // 
             // LevelsLbl
@@ -65,11 +67,38 @@
             this.LevelsLbl.TabIndex = 3;
             this.LevelsLbl.Text = "Levels";
             // 
+            // DifficultyFilter
+            // 
+            this.DifficultyFilter.AccessibleName = "";
+            this.DifficultyFilter.FormattingEnabled = true;
+            this.DifficultyFilter.Items.AddRange(new object[] {
+            "All",
+            "Easy",
+            "Medium",
+            "Hard"});
+            this.DifficultyFilter.Location = new System.Drawing.Point(19, 83);
+            this.DifficultyFilter.Name = "DifficultyFilter";
+            this.DifficultyFilter.Size = new System.Drawing.Size(121, 24);
+            this.DifficultyFilter.TabIndex = 4;
+            this.DifficultyFilter.Text = "All";
+            this.DifficultyFilter.SelectedIndexChanged += new System.EventHandler(this.DifficultyFilter_SelectedIndexChanged);
+            // 
+            // FilterLbl
+            // 
+            this.FilterLbl.AutoSize = true;
+            this.FilterLbl.Location = new System.Drawing.Point(146, 86);
+            this.FilterLbl.Name = "FilterLbl";
+            this.FilterLbl.Size = new System.Drawing.Size(104, 16);
+            this.FilterLbl.TabIndex = 5;
+            this.FilterLbl.Text = "Filter by difficulty";
+            // 
             // Levels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.FilterLbl);
+            this.Controls.Add(this.DifficultyFilter);
             this.Controls.Add(this.LevelsLbl);
             this.Controls.Add(this.levelsPanel);
             this.Controls.Add(this.BackButton);
@@ -87,5 +116,7 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel levelsPanel;
         private System.Windows.Forms.Label LevelsLbl;
+        private System.Windows.Forms.ComboBox DifficultyFilter;
+        private System.Windows.Forms.Label FilterLbl;
     }
 }
