@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -66,29 +67,48 @@ namespace Game_for_programming
                         return;
                     }
                 }
+                // regex paroļu pārbaudei https://stackoverflow.com/questions/5859632/regular-expression-for-password-validation
+                Regex passwordRegex = new Regex(@"^(?=.*[a - z])(?=.*[A - Z])(?=.*\d)(?=.*[^\da - zA - Z]).{ 8, 15 }$");
+                Match passwordMatch = passwordRegex.Match(password);
+                // regex epastu pārbaudei https://stackoverflow.com/questions/5342375/regex-email-validation
+                Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                Match match = emailRegex.Match(email);
 
-                string hashedPassword = HashPassword(password);
-
-                string insertQuery = "INSERT INTO Users (Username, Name, Password, Email, Role) " +
+                
+                if (match.Success && passwordMatch.Success) 
+                {
+                    string hashedPassword = HashPassword(password);
+                    string insertQuery = "INSERT INTO Users (Username, Name, Password, Email, Role) " +
                     "VALUES (@Username, @Name, @Password, @Email, @Role)";
-                using (SqlCommand cmd = new SqlCommand(insertQuery, con))
-                {
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Name", name);
-                    cmd.Parameters.AddWithValue("@Password", hashedPassword);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Role", role);
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Role", role);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (DataSet.Tables.Contains("Users"))
+                    {
+                        DataSet.Tables["Users"].Clear();
+                    }
+                    LoadData(Program.connectionString);
+
+                    MessageBox.Show("Sign-up successful!"); 
+                }else if (!match.Success)
+                {
+                    MessageBox.Show("Wrong email validation. Please choose another.");
+                    return;
+                }else if (!passwordMatch.Success)
+                {
+                    MessageBox.Show("Password must be 8–25 characters long and include at least one uppercase letter and one special character!");
+                    return;
                 }
 
-                if (DataSet.Tables.Contains("Users"))
-                {
-                    DataSet.Tables["Users"].Clear();
-                }
-                LoadData(Program.connectionString);
-
-                MessageBox.Show("Sign-up successful!");
+                
             }
         }
 

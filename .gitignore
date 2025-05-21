@@ -8,6 +8,8 @@
 Main.java
 python.py
 Main.class
+*.mdf
+*.ldf
 
 # Roslyn cache directories
 *.ide/

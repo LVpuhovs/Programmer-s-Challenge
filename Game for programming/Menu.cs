@@ -26,6 +26,9 @@ namespace Game_for_programming
                 signinbtn.Hide();
                 signupbtn.Hide();
                 SignOutBtn.Show();
+                if (user.Role == "Lecturer / Professor" || user.Role == "admin") {
+                    TaskListButton.Show();
+                }
             }
             else
             {
@@ -117,6 +120,11 @@ namespace Game_for_programming
                 settings.ShowDialog();
             }
 
+
+        }
+
+        private void TaskListButton_Click(object sender, EventArgs e)
+        {
 
         }
     }

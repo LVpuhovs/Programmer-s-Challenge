@@ -38,6 +38,7 @@
             this.signupbtn = new System.Windows.Forms.Button();
             this.SignOutBtn = new System.Windows.Forms.Button();
             this.UsernameLbl = new System.Windows.Forms.Label();
+            this.TaskListButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.English)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Latvian)).BeginInit();
             this.SuspendLayout();
@@ -146,12 +147,25 @@
             this.UsernameLbl.Size = new System.Drawing.Size(0, 16);
             this.UsernameLbl.TabIndex = 8;
             // 
+            // TaskListButton
+            // 
+            this.TaskListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaskListButton.Location = new System.Drawing.Point(681, 415);
+            this.TaskListButton.Name = "TaskListButton";
+            this.TaskListButton.Size = new System.Drawing.Size(107, 31);
+            this.TaskListButton.TabIndex = 9;
+            this.TaskListButton.Text = "Task List";
+            this.TaskListButton.UseVisualStyleBackColor = true;
+            this.TaskListButton.Visible = false;
+            this.TaskListButton.Click += new System.EventHandler(this.TaskListButton_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TaskListButton);
             this.Controls.Add(this.UsernameLbl);
             this.Controls.Add(this.SignOutBtn);
             this.Controls.Add(this.signupbtn);
@@ -182,6 +196,7 @@
         private System.Windows.Forms.Button signupbtn;
         private System.Windows.Forms.Button SignOutBtn;
         private System.Windows.Forms.Label UsernameLbl;
+        private System.Windows.Forms.Button TaskListButton;
     }
 }
 
