@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -251,6 +252,40 @@ namespace Game_for_programming
                 }
             }
             return completedTasks;
+        }
+
+        public void deleteTasks(int taskId)
+        {
+            using (SqlConnection con = new SqlConnection(Program.connectionString))
+            {
+                con.Open();
+                string query = "DELETE FROM Tasks WHERE IdTasks = @taskId";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@taskId", taskId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public void saveTask(string difficulty, string taskLv, string descriptionLv, string taskEng, string descriptionEng, string answer)
+        {
+            using (SqlConnection con = new SqlConnection(Program.connectionString))
+            {
+                con.Open();
+                string insertQuery = @"INSERT INTO Tasks (Difficulty, TaskLV, Answer, DescriptionLV, TaskEng, DescriptionEng)
+                                    VALUES (@difficulty, @taskLv, @answer, @descriptionLv, @taskEng, @descriptionEng);";
+                using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@difficulty", difficulty);
+                    cmd.Parameters.AddWithValue("@taskLv", taskLv);
+                    cmd.Parameters.AddWithValue("@answer", answer);
+                    cmd.Parameters.AddWithValue("@descriptionLv", descriptionLv);
+                    cmd.Parameters.AddWithValue("@taskEng", taskEng);
+                    cmd.Parameters.AddWithValue("@descriptionEng", descriptionEng);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            LoadData(Program.connectionString);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace Game_for_programming
             InitializeComponent();
             this.user = user;
             this.valoda = valoda;
+            this.KeyPreview = true;
+            Backbtn.Text = valoda.ToString() == "Latviešu"? "Atpakaļ": "Back";
 
             tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
             if (tasksTable == null)
@@ -42,12 +44,26 @@ namespace Game_for_programming
             TaskPannel.WrapContents = false;
             TaskPannel.FlowDirection = FlowDirection.TopDown;
 
+            Button addTask = new Button();
+            
+            addTask.Width = 100;
+            addTask.Height = 40;
+            addTask.Text =valoda.ToString() == "Latviešu"? "Pievienot Uzdevumu": "Add task";
+            TaskPannel.Controls.Add(addTask);
+            addTask.Click += (s, e) => 
+            {
+                TaskAdd taskAddForm = new TaskAdd(user, valoda);
+                this.Close();
+                taskAddForm.Show();
+            };
+            
+
             int counter = 1;
             foreach (DataRow row in tasksTable.Rows)
             {
                 Panel panel = new Panel();
-                panel.Width = TaskPannel.Width - 25;
-                panel.Height = 25;
+                panel.Width = TaskPannel.Width - 5;
+                panel.Height = 30;
 
                 Label idlbl = new Label();
                 idlbl.Text = counter.ToString();
@@ -57,25 +73,50 @@ namespace Game_for_programming
                 Label taskLV = new Label();
                 taskLV.Text = row["TaskLV"].ToString();
                 taskLV.Width = 400;
-                taskLV.Left = idlbl.Right + 10;
+                taskLV.Left = idlbl.Right + 5;
                 taskLV.TextAlign = ContentAlignment.MiddleLeft;
 
                 Label Difficulty = new Label();
                 Difficulty.Text = row["Difficulty"].ToString();
                 Difficulty.Width = 50;
-                Difficulty.Left = taskLV.Right + 10;
+                Difficulty.Left = taskLV.Right + 5;
                 Difficulty.TextAlign = ContentAlignment.MiddleLeft;
 
                 Label taskENG = new Label();
                 taskENG.Text = row["TaskEng"].ToString();
                 taskENG.Width = 400;
-                taskENG.Left = Difficulty.Right + 10;
+                taskENG.Left = Difficulty.Right + 5;
                 taskENG.TextAlign = ContentAlignment.MiddleLeft;
 
+                Button removeTask = new Button();
+                removeTask.Width = 100;
+                removeTask.Height = 40; 
+                removeTask.Text = valoda.ToString() == "Latviešu"? "Noņemt Uzdevumu": "Remove task";
+                removeTask.Left = taskENG.Right + 5;
+
+                
                 panel.Controls.Add(idlbl);
                 panel.Controls.Add(taskLV);
                 panel.Controls.Add(Difficulty);
                 panel.Controls.Add(taskENG);
+                panel.Controls.Add(removeTask);
+                removeTask.Click += (s, e) =>
+                {
+                    var confirm = MessageBox.Show(valoda.ToString() == "Latviešu"?
+                        "Vai esi pārliecināts, ka vēlies izdzēst uzdevumu?":"Are you sure to delete this task?",
+                        "Confirm Delete", MessageBoxButtons.YesNo);
+
+                    if (confirm != DialogResult.Yes)
+                        return;
+
+                    int taskId = Convert.ToInt32(row["idTasks"]);
+                    DataRow[] rowsToDelete = tasksTable.Select($"IdTasks = {taskId}");
+                    DataManager.Instance.deleteTasks(taskId);
+                    DataManager.Instance.LoadData(Program.connectionString);
+
+                    taskTableLoad();
+                };
+                
                 
                 TaskPannel.Controls.Add(panel);
                 
@@ -90,6 +131,15 @@ namespace Game_for_programming
             Menu menu = new Menu(user);
             this.Hide();
             menu.Show();
+        }
+
+        private void TaskList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Pause pause = new Pause(user, this);
+                pause.ShowDialog();
+            }
         }
     }
 }

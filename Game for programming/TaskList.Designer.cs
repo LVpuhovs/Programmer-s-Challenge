@@ -50,7 +50,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TaskPannel.Location = new System.Drawing.Point(0, 85);
             this.TaskPannel.Name = "TaskPannel";
-            this.TaskPannel.Size = new System.Drawing.Size(1235, 633);
+            this.TaskPannel.Size = new System.Drawing.Size(1403, 633);
             this.TaskPannel.TabIndex = 1;
             // 
             // Backbtn
@@ -68,13 +68,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1231, 718);
+            this.ClientSize = new System.Drawing.Size(1399, 718);
             this.Controls.Add(this.Backbtn);
             this.Controls.Add(this.TaskPannel);
             this.Controls.Add(this.TaskListLbl);
             this.Name = "TaskList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskList";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaskList_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

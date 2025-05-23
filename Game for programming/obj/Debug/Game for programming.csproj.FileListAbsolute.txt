@@ -100,3 +100,4 @@ D:\Game for programming\Game for programming\obj\Debug\Game for programming.cspr
 D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.Settings.resources
 D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.Pause.resources
 D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.TaskList.resources
+D:\Game for programming\Game for programming\obj\Debug\Game_for_programming.TaskAdd.resources

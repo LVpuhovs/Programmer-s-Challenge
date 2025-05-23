@@ -136,6 +136,12 @@
     <Compile Include="Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskAdd.Designer.cs">
+      <DependentUpon>TaskAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskAdd.resx">
+      <DependentUpon>TaskAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskList.resx">
       <DependentUpon>TaskList.cs</DependentUpon>
