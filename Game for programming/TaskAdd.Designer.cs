@@ -203,6 +203,7 @@
             this.Controls.Add(this.TaskLVTxtBx);
             this.Controls.Add(this.TaskAddLbl);
             this.Name = "TaskAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskAdd";
             this.ResumeLayout(false);
             this.PerformLayout();
