@@ -45,6 +45,7 @@ namespace Game_for_programming
         private void levelsLoad(object sender, EventArgs e)
         {
             levelsPanel.Controls.Clear();
+            levelsPanel.AutoScroll = true;
             List<int> completedTasks = DataManager.Instance.getCompletedTaskId(user.IdUser, selectedLanguage.ToString());
 
             int x = 10, y = 10;
@@ -54,12 +55,39 @@ namespace Game_for_programming
             int maxButtonsPerRow = 5;
 
             int counter = 1;
-
+            string previousDifficulty = "";
             foreach (DataRowView rowView in tasksTable.DefaultView)
             {
                 DataRow row = rowView.Row;
-                Button taskButton = new Button();
 
+                string currentDifficulty = row["Difficulty"].ToString();
+                if(currentDifficulty != previousDifficulty)
+                {
+                    Label difficultyLabel = new Label();
+                    difficultyLabel.AutoSize = true;
+                    if(valoda.ToString() == "Latviešu")
+                    {
+                        if (currentDifficulty == "Easy")
+                            difficultyLabel.Text = "Viegls";
+                        else if (currentDifficulty == "Medium")
+                            difficultyLabel.Text = "Vidējs";
+                        else if (currentDifficulty == "Hard")
+                            difficultyLabel.Text = "Grūts";
+                        else
+                            difficultyLabel.Text = currentDifficulty;
+                    }
+                    else
+                    {
+                        difficultyLabel.Text = currentDifficulty;
+                    }
+                    difficultyLabel.Location = new Point(x, y);
+                    levelsPanel.Controls.Add(difficultyLabel);
+                    y += difficultyLabel.Height + spacing;
+                    x = 10;
+                    previousDifficulty = currentDifficulty;
+                }
+
+                Button taskButton = new Button();
                 if (valoda.ToString() == "Latviešu")
                     taskButton.Text = $"{counter} Līmenis";
                     
