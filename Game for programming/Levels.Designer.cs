@@ -105,7 +105,6 @@
             this.Name = "Levels";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Levels";
-            this.Load += new System.EventHandler(this.levelsLoad);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Levels_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

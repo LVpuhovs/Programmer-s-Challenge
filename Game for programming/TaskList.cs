@@ -63,7 +63,7 @@ namespace Game_for_programming
             {
                 Panel panel = new Panel();
                 panel.Width = TaskPannel.Width - 5;
-                panel.Height = 30;
+                panel.Height = 40;
 
                 Label idlbl = new Label();
                 idlbl.Text = counter.ToString();
@@ -91,15 +91,27 @@ namespace Game_for_programming
                 Button removeTask = new Button();
                 removeTask.Width = 100;
                 removeTask.Height = 40; 
-                removeTask.Text = valoda.ToString() == "Latviešu"? "Noņemt Uzdevumu": "Remove task";
+                removeTask.Text = valoda.ToString() == "Latviešu"? "Noņemt Uzdevumu": "Remove Task";
                 removeTask.Left = taskENG.Right + 5;
 
-                
+                Button editTask = new Button();
+                editTask.Width = 100;
+                editTask.Height = 40;
+                editTask.Text = valoda.ToString() == "Latviešu" ? "Rediģēt Uzdevumu" : "Edit Task";
+                editTask.Left = removeTask.Right + 5;
+                editTask.Click += (s, e) =>
+                {
+                    TaskAdd taskEditForm = new TaskAdd(user, valoda, row);
+                    this.Close();
+                    taskEditForm.Show();
+                };
+
                 panel.Controls.Add(idlbl);
                 panel.Controls.Add(taskLV);
                 panel.Controls.Add(Difficulty);
                 panel.Controls.Add(taskENG);
                 panel.Controls.Add(removeTask);
+                panel.Controls.Add(editTask);
                 removeTask.Click += (s, e) =>
                 {
                     var confirm = MessageBox.Show(valoda.ToString() == "Latviešu"?
@@ -129,7 +141,8 @@ namespace Game_for_programming
         private void Backbtn_Click(object sender, EventArgs e)
         {
             Menu menu = new Menu(user);
-            this.Hide();
+            DataManager.Instance.LoadData(Program.connectionString);
+            this.Close();
             menu.Show();
         }
 

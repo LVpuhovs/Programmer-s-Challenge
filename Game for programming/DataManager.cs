@@ -75,7 +75,7 @@ namespace Game_for_programming
                 Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
                 Match match = emailRegex.Match(email);
 
-                if (match.Success && passwordMatch.Success) 
+                if (match.Success && passwordMatch.Success)
                 {
                     string hashedPassword = HashPassword(password);
                     string insertQuery = "INSERT INTO Users (Username, Name, Password, Email, Role) " +
@@ -97,12 +97,14 @@ namespace Game_for_programming
                     }
                     LoadData(Program.connectionString);
 
-                    MessageBox.Show("Sign-up successful!"); 
-                }else if (!match.Success)
+                    MessageBox.Show("Sign-up successful!");
+                }
+                else if (!match.Success)
                 {
                     MessageBox.Show("Wrong email validation. Please choose another.");
                     return;
-                }else if (!passwordMatch.Success)
+                }
+                else if (!passwordMatch.Success)
                 {
                     MessageBox.Show("Password must be 8–25 characters long and include at least one uppercase letter and one special character!");
                     return;
@@ -121,7 +123,7 @@ namespace Game_for_programming
                 userAdapter.TableMappings.Add("Table", "Users");
                 if (DataSet.Tables.Contains("Users"))
                 {
-                    DataSet.Tables["Users"].Clear(); 
+                    DataSet.Tables["Users"].Clear();
                 }
                 else
                 {
@@ -161,7 +163,7 @@ namespace Game_for_programming
                 userTaskAdapter.Fill(DataSet.Tables["UserTasks"]);
             }
         }
-        
+
 
         public User AuthenticateUser(string username, string password)
         {
@@ -202,7 +204,7 @@ namespace Game_for_programming
                         {
                             isCorrect = true;
                         }
-                        
+
                     }
                     else
                     {
@@ -212,7 +214,7 @@ namespace Game_for_programming
                 }
                 string insertQuery = @"INSERT INTO UserTasks (IdUser, IdTask, UserAnswer, IsCorrect, Language)
                                     VALUES (@userId, @taskId, @userAnswer, @isCorrect, @language);";
-                
+
                 using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@userId", userId);
@@ -282,6 +284,29 @@ namespace Game_for_programming
                     cmd.Parameters.AddWithValue("@descriptionLv", descriptionLv);
                     cmd.Parameters.AddWithValue("@taskEng", taskEng);
                     cmd.Parameters.AddWithValue("@descriptionEng", descriptionEng);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            LoadData(Program.connectionString);
+        }
+
+        public void updateTask(int taskId, string difficulty, string taskLv, string descriptionLv, string taskEng, string descriptionEng, string answer)
+        {
+            using (SqlConnection con = new SqlConnection(Program.connectionString))
+            {
+                con.Open();
+                string updateQuery = @"UPDATE Tasks 
+                                SET Difficulty = @difficulty, TaskLV = @taskLv, DescriptionLV = @descriptionLv, taskEng = @taskEng, descriptionEng = @descriptionEng, Answer = @answer
+                                WHERE IdTasks = @taskId";
+                using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@difficulty", difficulty);
+                    cmd.Parameters.AddWithValue("@taskLv", taskLv);
+                    cmd.Parameters.AddWithValue("@answer", answer);
+                    cmd.Parameters.AddWithValue("@descriptionLv", descriptionLv);
+                    cmd.Parameters.AddWithValue("@taskEng", taskEng);
+                    cmd.Parameters.AddWithValue("@descriptionEng", descriptionEng);
+                    cmd.Parameters.AddWithValue("@taskId", taskId);
                     cmd.ExecuteNonQuery();
                 }
             }

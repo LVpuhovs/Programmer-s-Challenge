@@ -49,7 +49,7 @@
             // 
             this.TaskAddLbl.AutoSize = true;
             this.TaskAddLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TaskAddLbl.Location = new System.Drawing.Point(307, 37);
+            this.TaskAddLbl.Location = new System.Drawing.Point(329, 32);
             this.TaskAddLbl.Name = "TaskAddLbl";
             this.TaskAddLbl.Size = new System.Drawing.Size(176, 31);
             this.TaskAddLbl.TabIndex = 0;
@@ -164,7 +164,7 @@
             // 
             // AddTaskBtn
             // 
-            this.AddTaskBtn.Location = new System.Drawing.Point(291, 763);
+            this.AddTaskBtn.Location = new System.Drawing.Point(313, 768);
             this.AddTaskBtn.Name = "AddTaskBtn";
             this.AddTaskBtn.Size = new System.Drawing.Size(192, 34);
             this.AddTaskBtn.TabIndex = 14;

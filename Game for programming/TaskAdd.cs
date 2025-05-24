@@ -15,12 +15,15 @@ namespace Game_for_programming
         private User user;
         private Language valoda;
         private DataTable tasksTable = new DataTable();
-        public TaskAdd(User user, Language valoda)
+        private DataRow editingRow = null;
+        public TaskAdd(User user, Language valoda, DataRow editingRow = null)
         {
             InitializeComponent();
             this.user = user;
             this.valoda = valoda;
+            this.editingRow = editingRow;
             tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
+
             if (tasksTable == null)
             {
                 if (valoda.ToString() == "Latviešu")
@@ -31,13 +34,34 @@ namespace Game_for_programming
                 return;
             }
 
-            TaskLVLBL.Text = valoda.ToString() == "Latviešu"? "Uzdevuma nosacījums latviešu valodā": "Task in Latvian";
+            TaskLVLBL.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma nosacījums latviešu valodā" : "Task in Latvian";
             DescriptionLV.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma apraksts latviešu valodā" : "Description in Latvian";
             TaskENGLbl.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma nosacījums angļu valodā" : "Task in English";
             DescriptionEngLBL.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma apraksts angļu valodā" : "Description in English";
             AnswerLbl.Text = valoda.ToString() == "Latviešu" ? "Atbilde" : "Answer";
             DifficultyLbl.Text = valoda.ToString() == "Latviešu" ? "Grūtības pakāpe" : "Difficulty";
             AddTaskBtn.Text = valoda.ToString() == "Latviešu" ? "Pievienot Uzdevumu" : "Add Task";
+            
+            if(editingRow != null)
+            {
+                TaskLVTxtBx.Text = editingRow["TaskLV"].ToString();
+                DescriptionLVTxtBx.Text = editingRow["DescriptionLV"].ToString();
+                TaskENGTxtBx.Text = editingRow["TaskEng"].ToString();
+                DescriptionENGTxtBx.Text = editingRow["DescriptionEng"].ToString();
+                AnswerTxtBx.Text = editingRow["Answer"].ToString();
+
+                string difficulty = editingRow["Difficulty"].ToString();
+                for(int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (checkedListBox1.Items[i].ToString() == difficulty) 
+                    {
+                        checkedListBox1.SetItemChecked(i, true);
+                        break;
+                    }
+                }
+                AddTaskBtn.Text = valoda.ToString() == "Latviešu"? "Saglabāt izmaiņas": "Save Changes";
+            }
+
         }
 
         private void BackBtn_Click(object sender, EventArgs e)
@@ -69,7 +93,14 @@ namespace Game_for_programming
                     "Please fill fields in answer, difficulty, task and description in at least one language");
                 return;
             }
-            DataManager.Instance.saveTask(difficulty, taskLV, descriptionLV, taskEng, descriptionEng, answer);
+            if (editingRow != null)
+            {
+                int taskId = Convert.ToInt32(editingRow["idTasks"]);
+                DataManager.Instance.updateTask(taskId, difficulty, taskLV, descriptionLV, taskEng, descriptionEng, answer);
+            }else
+                DataManager.Instance.saveTask(difficulty, taskLV, descriptionLV, taskEng, descriptionEng, answer);
+            DataManager.Instance.LoadData(Program.connectionString);
+
             TaskList taskList = new TaskList(user, valoda);
             this.Close();
             taskList.Show();

@@ -19,6 +19,7 @@ namespace Game_for_programming
         public Levels(Language language, User user, Language selectedLanguage)
         {
             InitializeComponent();
+            DataManager.Instance.LoadData(Program.connectionString);
             this.KeyPreview = true;
             this.user = user;
             this.selectedLanguage = selectedLanguage;
@@ -41,31 +42,77 @@ namespace Game_for_programming
                     MessageBox.Show("Couldn't load task table.");
                 return;
             }
+            InitializeDifficultyOrder();
+            levelsLoad();
         }
-        private void levelsLoad(object sender, EventArgs e)
+        private void InitializeDifficultyOrder()
+        {
+
+            if (!tasksTable.Columns.Contains("DifficultyOrder"))
+            {
+                tasksTable.Columns.Add("DifficultyOrder", typeof(int));
+            }
+            updateDifficultyValues();
+        }
+
+        private void updateDifficultyValues()
+        {
+            foreach (DataRow row in tasksTable.Rows)
+            {
+                switch (row["Difficulty"].ToString())
+                {
+                    case "Easy":
+                        row["DifficultyOrder"] = 1;
+                        break;
+                    case "Medium":
+                        row["DifficultyOrder"] = 2;
+                        break;
+                    case "Hard":
+                        row["DifficultyOrder"] = 3;
+                        break;
+                    default:
+                        row["DifficultyOrder"] = 99;
+                        break;
+                }
+            }
+        }
+        private void levelsLoad()
         {
             levelsPanel.Controls.Clear();
+
+            DataManager.Instance.LoadData(Program.connectionString);
+            tasksTable = DataManager.Instance.DataSet.Tables["Tasks"];
+            InitializeDifficultyOrder();
+
             levelsPanel.AutoScroll = true;
             List<int> completedTasks = DataManager.Instance.getCompletedTaskId(user.IdUser, selectedLanguage.ToString());
-
+            Dictionary<string, int> counter = new Dictionary<string, int>();
             int x = 10, y = 10;
             int buttonWidth = 100;
             int buttonHeight = 40;
             int spacing = 10;
             int maxButtonsPerRow = 5;
-
-            int counter = 1;
+            int buttonsInRow = 0;
             string previousDifficulty = "";
+
+            tasksTable.DefaultView.Sort = "DifficultyOrder ASC, idTasks ASC";
+
             foreach (DataRowView rowView in tasksTable.DefaultView)
             {
                 DataRow row = rowView.Row;
 
                 string currentDifficulty = row["Difficulty"].ToString();
-                if(currentDifficulty != previousDifficulty)
+                if (currentDifficulty != previousDifficulty)
                 {
+                    x = 10;
+                    if (previousDifficulty != "")
+                    {
+                        y += buttonHeight + spacing * 2;
+                    }
+
                     Label difficultyLabel = new Label();
                     difficultyLabel.AutoSize = true;
-                    if(valoda.ToString() == "Latviešu")
+                    if (valoda.ToString() == "Latviešu")
                     {
                         if (currentDifficulty == "Easy")
                             difficultyLabel.Text = "Viegls";
@@ -85,15 +132,19 @@ namespace Game_for_programming
                     y += difficultyLabel.Height + spacing;
                     x = 10;
                     previousDifficulty = currentDifficulty;
+                    buttonsInRow = 0;
+
+                    counter[currentDifficulty] = 1;
                 }
 
                 Button taskButton = new Button();
+                int levelNr = counter[currentDifficulty];
                 if (valoda.ToString() == "Latviešu")
-                    taskButton.Text = $"{counter} Līmenis";
-                    
+                    taskButton.Text = $"{levelNr} Līmenis";
+
                 else if (valoda.ToString() == "English")
-                    taskButton.Text = $"Level {counter}";
-                
+                    taskButton.Text = $"Level {levelNr}";
+
                 taskButton.Width = buttonWidth;
                 taskButton.Height = buttonHeight;
                 taskButton.Left = x;
@@ -107,23 +158,27 @@ namespace Game_for_programming
 
                 taskButton.Click += (s, args) =>
                 {
-                    
+
                     Game game = new Game(valoda, user, selectedLanguage, taskId);
                     this.Hide();
                     game.Show();
-                    
+
                 };
 
                 levelsPanel.Controls.Add(taskButton);
                 x += buttonWidth + spacing;
+                buttonsInRow++;
+                counter[currentDifficulty]++;
 
-                if (counter % maxButtonsPerRow == 0)
+                if (buttonsInRow >= maxButtonsPerRow)
                 {
                     x = 10;
                     y += buttonHeight + spacing;
+                    buttonsInRow = 0;
                 }
 
-                counter++;
+            
+
             }
         }
 
@@ -132,7 +187,7 @@ namespace Game_for_programming
         private void BackButton_Click(object sender, EventArgs e)
         {
             LanguageSelection languageSelection = new LanguageSelection(valoda, user);
-            this.Hide();
+            this.Close();
             languageSelection.Show();
         }
 
@@ -153,7 +208,7 @@ namespace Game_for_programming
                 tasksTable.DefaultView.RowFilter = string.Empty;
             else
                 tasksTable.DefaultView.RowFilter = $"Difficulty = '{selectedDifficulty}'";
-            levelsLoad(null, EventArgs.Empty);
+            levelsLoad();
         }
     }
 }
