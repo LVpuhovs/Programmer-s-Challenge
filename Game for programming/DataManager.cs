@@ -296,7 +296,8 @@ namespace Game_for_programming
             {
                 con.Open();
                 string updateQuery = @"UPDATE Tasks 
-                                SET Difficulty = @difficulty, TaskLV = @taskLv, DescriptionLV = @descriptionLv, taskEng = @taskEng, descriptionEng = @descriptionEng, Answer = @answer
+                                SET Difficulty = @difficulty, TaskLV = @taskLv, DescriptionLV = @descriptionLv, taskEng = @taskEng,
+                                descriptionEng = @descriptionEng, Answer = @answer
                                 WHERE IdTasks = @taskId";
                 using (SqlCommand cmd = new SqlCommand(updateQuery, con))
                 {
