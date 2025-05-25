@@ -107,7 +107,7 @@ namespace Game_for_programming
                     x = 10;
                     if (previousDifficulty != "")
                     {
-                        y += buttonHeight + spacing * 2;
+                        y += buttonHeight + spacing;
                     }
 
                     Label difficultyLabel = new Label();

@@ -33,7 +33,7 @@ namespace Game_for_programming
                     MessageBox.Show("Couldn't load task table.");
                 return;
             }
-
+            TaskAddLbl.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma pievienošana" : "Adding Task";
             TaskLVLBL.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma nosacījums latviešu valodā" : "Task in Latvian";
             DescriptionLV.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma apraksts latviešu valodā" : "Description in Latvian";
             TaskENGLbl.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma nosacījums angļu valodā" : "Task in English";
@@ -44,6 +44,7 @@ namespace Game_for_programming
             
             if(editingRow != null)
             {
+                TaskAddLbl.Text = valoda.ToString() == "Latviešu" ? "Uzdevuma rediģēšana" : "Editing Task";
                 TaskLVTxtBx.Text = editingRow["TaskLV"].ToString();
                 DescriptionLVTxtBx.Text = editingRow["DescriptionLV"].ToString();
                 TaskENGTxtBx.Text = editingRow["TaskEng"].ToString();

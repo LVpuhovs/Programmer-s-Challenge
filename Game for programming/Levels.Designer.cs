@@ -37,8 +37,6 @@
             // 
             // BackButton
             // 
-            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton.Location = new System.Drawing.Point(19, 21);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(97, 33);
@@ -49,7 +47,9 @@
             // 
             // levelsPanel
             // 
-            this.levelsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.levelsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.levelsPanel.Location = new System.Drawing.Point(0, 126);
             this.levelsPanel.Name = "levelsPanel";
             this.levelsPanel.Size = new System.Drawing.Size(800, 324);
@@ -57,8 +57,7 @@
             // 
             // LevelsLbl
             // 
-            this.LevelsLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LevelsLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LevelsLbl.AutoSize = true;
             this.LevelsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LevelsLbl.Location = new System.Drawing.Point(346, 21);
