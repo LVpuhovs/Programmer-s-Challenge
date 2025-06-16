@@ -69,7 +69,7 @@ namespace Game_for_programming
                     }
                 }
                 // regex paroļu pārbaudei https://stackoverflow.com/questions/5859632/regular-expression-for-password-validation
-                Regex passwordRegex = new Regex(@"^(?=.*[a - z])(?=.*[A - Z])(?=.*\d)(?=.*[^\da - zA - Z]).{ 8, 15 }$");
+                Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$");
                 Match passwordMatch = passwordRegex.Match(password);
                 // regex epastu pārbaudei https://stackoverflow.com/questions/5342375/regex-email-validation
                 Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");

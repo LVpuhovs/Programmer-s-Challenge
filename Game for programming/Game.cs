@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.CodeAnalysis;
@@ -135,43 +136,81 @@ namespace Game_for_programming
         private async Task ExecuteCSharpCode(string code)
         {
             var stringWriter = new StringWriter();
+            var originalOutput = Console.Out;
             Console.SetOut(stringWriter);
-            try
-            {
-                var scriptOptions = ScriptOptions.Default
-                .WithReferences(AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !string.IsNullOrWhiteSpace(a.Location))
-                .Select(a => MetadataReference.CreateFromFile(a.Location)))
-                .WithImports("System",
-                    "System.Collections.Generic",
-                    "System.Linq",
-                    "System.Text",
-                    "System.Windows.Forms",
-                    "System.IO",
-                    "System.Threading.Tasks");
 
-                await CSharpScript.RunAsync(code, scriptOptions);
+            var scriptOptions = ScriptOptions.Default
+                .WithReferences(
+                    MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                    MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location),
+                    MetadataReference.CreateFromFile(typeof(StringBuilder).Assembly.Location),
+                    MetadataReference.CreateFromFile(typeof(Console).Assembly.Location))
+                .WithImports("System", "System.Linq", "System.Text");
+
+            if (code.Contains("while(true") || code.Contains("for(;;") || code.Contains("Thread.Sleep"))
+            {
+                outputTxtBx.Text = valoda.ToString() == "Latviešu"
+                    ? "Kods satur iespējamu bezgalīgu ciklu un tika bloķēts."
+                    : "Code contains a potential infinite loop and was blocked.";
+                Console.SetOut(originalOutput);
+                stringWriter.Dispose();
+                return;
+            }
+
+            Exception scriptException = null;
+            var threadFinished = false;
+
+            Thread scriptThread = new Thread(() =>
+            {
+                try
+                {
+                    var task = CSharpScript.RunAsync(code, scriptOptions);
+                    task.Wait();
+                }
+                catch (Exception ex)
+                {
+                    scriptException = ex;
+                }
+                threadFinished = true;
+            });
+
+            scriptThread.IsBackground = true;
+            scriptThread.Start();
+
+            int timeoutMs = 3000;
+            int checkInterval = 100;
+
+            for (int waited = 0; waited < timeoutMs && !threadFinished; waited += checkInterval)
+            {
+                await Task.Delay(checkInterval);
+            }
+
+            if (!threadFinished)
+            {
+                scriptThread.Abort();
+                outputTxtBx.Text = valoda.ToString() == "Latviešu"
+                    ? "Izpilde tika atcelta – skripts bija pārāk ilgs."
+                    : "Execution cancelled – script took too long.";
+            }
+            else if (scriptException is CompilationErrorException cee)
+            {
+                outputTxtBx.Text = $"Kļūdas:\n{string.Join("\n", cee.Diagnostics)}";
+            }
+            else if (scriptException != null)
+            {
+                outputTxtBx.Text = valoda.ToString() == "Latviešu"
+                    ? $"Izpildes kļūda:\n{scriptException.Message}"
+                    : $"Run Error:\n{scriptException.Message}";
+            }
+            else
+            {
                 outputTxtBx.Text = stringWriter.ToString();
             }
-            catch (CompilationErrorException ex)
-            {
-                outputTxtBx.Text = $"Kļūdas:\n{string.Join("\n", ex.Diagnostics)}";
-            }
-            catch (Exception ex)
-            {
-                if (valoda.ToString() == "Latviešu")
-                    outputTxtBx.Text = $"Izpildes kļūda:\n{ex.Message}";
-                    
-                else if (valoda.ToString() == "English")
-                    outputTxtBx.Text = $"Run Error:\n{ex.Message}";
-                
-            }
-            finally
-            {
-                Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true });
-            }
 
+            Console.SetOut(originalOutput);
+            stringWriter.Dispose();
         }
+
         // piemērs JAVA kodam ņemts no https://www.quora.com/Can-we-compile-and-run-a-Java-file-using-C
         private string ExecuteJavaCode(string code)
         {
